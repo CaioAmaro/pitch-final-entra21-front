@@ -27,9 +27,23 @@
                 - login.css
 
 + Paleta de cores:
-    - Descreva a paleta de cores utilizada, exemplo:
+    + Descreva a paleta de cores utilizada, exemplo:
         - Primary: #2a8c4a;
         - Secondary: #64c27b;
         - White: #ffffff;
         - background: #9bfab0;
         - background-secondary: #d0fdd7;
+
++ Project division:
+    + JACKSON:
+        - Header
+        - Footer
+        - Navegation (Menu Options)
+
+    + CAIO:
+        - Home Page
+        - Products Page (Lista de produtos)
+
+    + DOUGLAS:
+        - Login Page
+        - Register Page
