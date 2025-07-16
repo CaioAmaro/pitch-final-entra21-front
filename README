@@ -1,0 +1,27 @@
++ Components
+    - Presente os componentes da webpage, exemplo:
+        - Header
+        - Footer
+
++ Pages
+    - Presente as páginas da aplicação, exemplo:
+        - Home
+        - Login
+        - Register
+        - Products
+
++ Scripts
+    - Descreva os scripts utilizados, exemplo:
+        - main.js
+        - utils.js
+
++ Styles
+    - Descreva os estilos utilizados, exemplo:
+        - styles.css
+        - Optional -> Dividir entre componentes e páginas, exemplo:
+            - components/
+                - header.css
+                - footer.css
+            - pages/
+                - home.css
+                - login.css
