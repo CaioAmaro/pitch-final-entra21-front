@@ -25,3 +25,11 @@
             - pages/
                 - home.css
                 - login.css
+
++ Paleta de cores:
+    - Descreva a paleta de cores utilizada, exemplo:
+        - Primary: #2a8c4a;
+        - Secondary: #64c27b;
+        - White: #ffffff;
+        - background: #9bfab0;
+        - background-secondary: #d0fdd7;
