@@ -5,3 +5,19 @@
 .nav-pills .nav-link.active {
     background-color: #2a8c4a;
 }
+
+/* botões e links azuis do Bootstrap */
+.btn-primary {
+    background-color: #2a8c4a;
+    border-color: #2a8c4a;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #7fdc92;
+    border-color: #7fdc92;
+}
+a, .nav-link {
+    color: #2a8c4a;
+}
+a:hover, .nav-link:hover {
+    color: #7fdc92;
+}
