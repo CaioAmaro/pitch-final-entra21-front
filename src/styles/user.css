@@ -1,5 +1,40 @@
 .card {
     border-radius: 25px;
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+@media (max-width: 576px) {
+    .card {
+        padding: 0 5px;
+        max-width: 98vw;
+    }
+    .card-body {
+        padding: 1.5rem !important;
+    }
+    .form-outline.flex-fill.mb-0 {
+        min-width: 0;
+    }
+    .d-flex.flex-row.align-items-center.mb-4 i {
+        font-size: 1.1em;
+        min-width: 30px;
+        margin-top: 6px;
+    }
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .card {
+        max-width: 100vw;
+        padding: 0 2px;
+    }
+    .card-body {
+        padding: 0.7rem !important;
+    }
 }
 
 .nav-pills .nav-link.active {
@@ -20,4 +55,19 @@ a, .nav-link {
 }
 a:hover, .nav-link:hover {
     color: #7fdc92;
+}
+.d-flex.flex-row.align-items-center.mb-4 i {
+    min-width: 40px;
+    text-align: center;
+    align-self: flex-start;
+    margin-top: 19px;  
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-size: 1.5em;
+    color: #2a8c4a;
+}
+.form-outline.flex-fill.mb-0 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
