@@ -1,0 +1,74 @@
+:root {
+    --primary: #2a8c4a;
+    --white: #ffffff;
+    --black: #1a1919;
+    --hover: #00ff40;
+    --hover-footer: #5a5252;
+    --background: #9bfab0;
+    --background-gradient: #2a8c4a;
+}
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+.card {
+    max-width: 320px;
+    margin: auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 90%;
+}
+
+.card-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--black);
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ratio img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.row {
+    justify-content: center;
+}
+
+/* Responsividade extra para os cards */
+@media (max-width: 767px) {
+    .row-cols-md-3>.col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.card-img-top {
+    height: 200px;
+    width: 100%;
+    object-fit: contain;
+    /* Alterado de cover para contain */
+    background: #f8f9fa;
+    /* Opcional: cor de fundo para imagens menores */
+}
+
+
+.justify-content-center {
+    justify-content: center !important;
+}
