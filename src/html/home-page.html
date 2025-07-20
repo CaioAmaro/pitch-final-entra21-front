@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CheckBuy - Home Page</title>
+    <link rel="icon" type="image/png" href="/img/logo-checkbuy.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/src/css/hero.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Pequenas customizações para alguns cards */
+        .rounded-4 {
+            border-radius: 1.5rem !important;
+        }
+
+        .rounded-5 {
+            border-radius: 3rem !important;
+        }
+
+        .icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+        }
+
+        .bg-primary-circle {
+            background-color: #0d6efd;
+        }
+
+        .bg-success-circle {
+            background-color: #198754;
+        }
+
+        .bg-warning-circle {
+            background-color: #ffc107;
+        }
+
+        .bg-danger-circle {
+            background-color: #dc3545;
+        }
+
+        .card-gradient {
+            background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+            color: white;
+            border-radius: 1rem;
+        }
+
+        .card-border-bottom {
+            border-bottom: 4px solid #0d6efd;
+            border-radius: 0 !important;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-md bg-light ">
+        <div class="container-sm d-md-flex justify-content-md-between align-items-md-center">
+            <a class="navbar-brand" href="#">
+                <img src="/img/logo-checkbuy.png" alt="logo-checkbuy" width="50">
+            </a>
+
+            <span class="d-md-none navbar-text">
+                Sua Economia Começa Aqui.
+            </span>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+
+                <div>
+                    <button class="btn btn-outline-success" type="button">Login</button>
+                    <button class="btn btn-outline-dark" type="button">Registre-se</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-video-bg pt-5 mt-5">
+        <video autoplay muted loop playsinline>
+            <source src="/movies/market-room-loop.mp4" type="video/webm" />
+            Seu navegador não suporta vídeo.
+        </video>
+        <div class="container text-center text-white">
+            <h1 class="display-4 fw-bold">Bem-vindo à CheckBuy!</h1>
+            <p class="lead">Compare preços, economize tempo e dinheiro.</p>
+            <a href="#" class="btn btn-success btn-lg mt-3">Começar agora</a>
+        </div>
+    </section>
+
+
+    <section class="py-5 bg-light">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <span class="badge bg-success text-white text-uppercase px-3 py-1">Recursos</span>
+                <h2 class="fw-bold mt-3">Principais funcionalidades</h2>
+                <p class="text-muted mx-auto" style="max-width: 700px;">O Economiza Blu oferece diversas ferramentas
+                    para ajudar você a economizar em suas compras.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-dark ">
+
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle bg-danger bg-opacity-10 text-danger mb-3"
+                                style="width: 56px; height: 56px;">
+                                <i class="fas fa-list-ul fs-5"></i>
+                            </div>
+                            <h5 class="card-title">Listas de Compras</h5>
+                            <p class="text-muted">Crie e gerencie suas listas de compras de forma simples e rápida.
+                                Adicione produtos, quantidades e organize por categorias.</p>
+
+                            <hr>
+                            <ul class="list-unstyled text-danger small">
+                                <li><i class="fas fa-check-circle me-2"></i>Organização por categorias</li>
+                                <li class="mt-1"><i class="fas fa-check-circle me-2"></i>Histórico de compras</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-dark">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle bg-success bg-opacity-10 text-success mb-3"
+                                style="width: 56px; height: 56px;">
+                                <i class="fas fa-search-dollar fs-5"></i>
+                            </div>
+                            <h5 class="card-title">Comparação de Preços</h5>
+                            <p class="text-muted">Compare preços entre diferentes mercados e encontre onde sua lista de
+                                compras sai mais barata, economizando tempo e dinheiro.</p>
+
+                            <hr>
+                            <ul class="list-unstyled text-success small">
+                                <li><i class="fas fa-check-circle me-2"></i>Comparação automática</li>
+                                <li class="mt-1"><i class="fas fa-check-circle me-2"></i>Economia calculada</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-dark">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle bg-warning bg-opacity-10 text-warning mb-3"
+                                style="width: 56px; height: 56px;">
+                                <i class="fas fa-bell fs-5"></i>
+                            </div>
+                            <h5 class="card-title">Alertas de Promoções</h5>
+                            <p class="text-muted">Receba notificações sobre promoções dos produtos que você mais compra,
+                                garantindo que nunca perca uma oportunidade de economia.</p>
+
+                            <hr>
+                            <ul class="list-unstyled text-warning small">
+                                <li><i class="fas fa-check-circle me-2"></i>Alertas personalizados</li>
+                                <li class="mt-1"><i class="fas fa-check-circle me-2"></i>Notificações em tempo real
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-dark">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle bg-danger bg-opacity-10 text-danger mb-3"
+                                style="width: 56px; height: 56px;">
+                                <i class="fas fa-map-marker-alt fs-5"></i>
+                            </div>
+                            <h5 class="card-title">Mercados Locais</h5>
+                            <p class="text-muted">Encontre os mercados mais próximos de você em Blumenau, com
+                                informações sobre horários de funcionamento e localização.</p>
+                            <hr>
+                            <ul class="list-unstyled text-danger small">
+                                <li><i class="fas fa-check-circle me-2"></i>Mapa interativo</li>
+                                <li class="mt-1"><i class="fas fa-check-circle me-2"></i>Rotas e distâncias</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-dark">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary bg-opacity-10 text-primary mb-3"
+                                style="width: 56px; height: 56px;">
+                                <i class="fas fa-chart-line fs-5"></i>
+                            </div>
+                            <h5 class="card-title">Histórico de Economia</h5>
+                            <p class="text-muted">Acompanhe quanto você economizou ao longo do tempo usando o
+                                aplicativo, com gráficos e estatísticas detalhadas.</p>
+                            <hr>
+                            <ul class="list-unstyled text-primary small">
+                                <li><i class="fas fa-check-circle me-2"></i>Gráficos de economia</li>
+                                <li class="mt-1"><i class="fas fa-check-circle me-2"></i>Relatórios mensais</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="col-sm-6 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-dark">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle bg-purple bg-opacity-10 text-purple mb-3"
+                                style="width: 56px; height: 56px;">
+                                <i class="fas fa-users fs-5"></i>
+                            </div>
+                            <h5 class="card-title">Comunidade</h5>
+                            <p class="text-muted">Compartilhe dicas de economia com outros usuários e participe de uma
+                                comunidade local focada em economizar.</p>
+                            <hr>
+                            <ul class="list-unstyled text-purple small">
+                                <li><i class="fas fa-check-circle me-2"></i>Fórum de usuários</li>
+                                <li class="mt-1"><i class="fas fa-check-circle me-2"></i>Compartilhamento de listas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="conteiner-fluid">
+            <div class="text-center">
+                <span class="badge bg-danger text-uppercase">Economia Real</span>
+                <h2 class="display-6 fw-bold text-dark mt-3 mb-4">Comparação de preços inteligente</h2>
+                <p class="text-muted mb-5">O CheckBuy compara automaticamente os preços da sua lista de compras em
+                    diferentes mercados de Blumenau, mostrando onde você economiza mais.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-light text-dark pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+
+                <!-- Logo e Descrição -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase mb-3">CheckBuy</h5>
+                    <p class="text-muted">Ajudamos você a economizar comparando preços em supermercados de forma rápida
+                        e inteligente.</p>
+                </div>
+
+                <!-- Links úteis -->
+                <div class="col-md-2 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3">Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Início</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Recursos</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Sobre</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ajuda -->
+                <div class="col-md-2 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3">Ajuda</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">FAQ</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Suporte</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <!-- Redes sociais -->
+                <div class="col-md-4 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-3">Siga-nos</h6>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light fs-5"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-light fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light fs-5"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light fs-5"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary">
+
+            <!-- Copyright -->
+            <div class="text-center small text-muted">
+                © 2025 CheckBuy. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+</body>
+
+</html>
