@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>CheckBuy - Escolha uma Categoria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/css/hero.css">
+    <link rel="icon" type="image/png" href="https://drive.usercontent.google.com/download?id=1WOWheDXiqtBd0ds3_9YzIo1keiRkf_C7">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar sticky-top navbar-expand-md bg-light">
+        <div class="container-sm d-md-flex justify-content-md-between align-items-md-center">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/img/logo-checkbuy.png" alt="logo-checkbuy" width="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="d-flex flex-column align-items-start flex-md-row justify-content-md-between container-md">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Categorias</a></li>
+                    </ul>
+                    <div class="align-self-center">
+                        <a href="/src/html/tela-criacao-listas.html" class="btn btn-success position-relative">
+                            <i class="fas fa-shopping-cart"></i> Minha Lista
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="border-secondary py-1 bg-success"></div>
+
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mt-3">Escolha uma categoria para começar</h2>
+            <p class="text-muted mx-auto" style="max-width: 700px;">Navegue pelas seções para encontrar seus produtos favoritos.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col d-flex h-100">
+                <a href="/src/html/produtos-categoria.html" class="text-decoration-none text-dark w-100">
+                    <div class="card h-100 shadow-sm border-dark"><img src="/images/acougue.jpg" class="card-img-top" alt="Carnes"><div class="card-body text-center"><h5 class="card-title">CARNES</h5></div></div>
+                </a>
+            </div>
+            <div class="col d-flex h-100">
+                 <a href="/src/html/produtos-categoria.html" class="text-decoration-none text-dark w-100">
+                    <div class="card h-100 shadow-sm border-dark"><img src="/images/laticinios.jpg" class="card-img-top" alt="Laticínios"><div class="card-body text-center"><h5 class="card-title">LATICÍNIOS</h5></div></div>
+                </a>
+            </div>
+            <div class="col d-flex h-100">
+                 <a href="/src/html/produtos-categoria.html" class="text-decoration-none text-dark w-100">
+                    <div class="card h-100 shadow-sm border-dark"><img src="/images/lava-roupa.jpg" class="card-img-top" alt="Limpeza"><div class="card-body text-center"><h5 class="card-title">LIMPEZA</h5></div></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-dark pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12"><h5 class="text-uppercase mb-3">CheckBuy</h5><div class="alert alert-success w-lg-25 pb-4">Ajudamos você a economizar comparando preços em supermercados de forma rápida e inteligente.</div></div>
+                <div class="col-sm-3"><h6 class="text-uppercase fw-bold mb-3">Links</h6><ul class="list-unstyled"><li><a href="#" class="text-muted text-decoration-none">Início</a></li><li><a href="#" class="text-muted text-decoration-none">Recursos</a></li><li><a href="#" class="text-muted text-decoration-none">Sobre</a></li><li><a href="#" class="text-muted text-decoration-none">Contato</a></li></ul></div>
+                <div class="col-sm-3"><h6 class="text-uppercase fw-bold mb-3">Ajuda</h6><ul class="list-unstyled"><li><a href="#" class="text-muted text-decoration-none">FAQ</a></li><li><a href="#" class="text-muted text-decoration-none">Suporte</a></li><li><a href="#" class="text-muted text-decoration-none">Política de Privacidade</a></li></ul></div>
+                <div class="col-sm-3"><h6 class="text-uppercase text-dark mb-3">Siga-nos</h6><div class="d-flex gap-3"><a href="#" class="text-success fs-5"><i class="fab fa-facebook-f"></i></a><a href="#" class="text-success fs-5"><i class="fab fa-instagram"></i></a><a href="#" class="text-success fs-5"><i class="fab fa-twitter"></i></a><a href="#" class="text-success fs-5"><i class="fab fa-linkedin-in"></i></a></div></div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center small text-muted">© 2025 CheckBuy. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>

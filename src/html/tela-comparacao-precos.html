@@ -1,125 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CheckBuy - Comparar Preços</title>
-    <link rel="icon" type="image/png" href="https://drive.usercontent.google.com/download?id=1WOWheDXiqtBd0ds3_9YzIo1keiRkf_C7">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { background-color: #f8f9fa; }
-        .supermarket-logo { max-height: 50px; }
-        .price-highlight { font-weight: bold; color: #198754; }
-    </style>
+    <link rel="icon" type="image/png" href="https://drive.usercontent.google.com/download?id=1WOWheDXiqtBd0ds3_9YzIo1keiRkf_C7">
 </head>
+<body class="bg-light">
 
-<body>
+    <nav class="navbar sticky-top navbar-expand-md bg-light">
+       <div class="container-sm d-md-flex justify-content-md-between align-items-md-center">
+             <a class="navbar-brand" href="/index.html"><img src="/img/logo-checkbuy.png" alt="logo-checkbuy" width="50"></a>
+        </div>
+    </nav>
+    <div class="border-secondary py-1 bg-success"></div>
+
     <div class="container-fluid py-5">
-        <div class="text-center mb-5">
-            <h1 class="display-5 fw-bold">Comparativo de Preços</h1>
-            <p class="lead text-muted">Veja onde a sua lista de compras sai mais barata.</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-lg-3">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-dark text-white fw-bold">
-                        Sua Lista de Compras
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40" class="me-3 rounded" alt="Produto"> Leite Integral
-                        </li>
-                        <li class="list-group-item d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40" class="me-3 rounded" alt="Produto"> Pão de Forma
-                        </li>
-                        <li class="list-group-item d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40" class="me-3 rounded" alt="Produto"> Maçã (Kg)
-                        </li>
-                         <li class="list-group-item d-flex align-items-center">
-                            <img src="https://via.placeholder.com/40" class="me-3 rounded" alt="Produto"> Arroz (5kg)
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-9">
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-header text-center">
-                                <img src="https://via.placeholder.com/150x50.png?text=Logo+Giassi" alt="Logo Giassi" class="img-fluid supermarket-logo">
-                            </div>
-                            <div class="card-body">
-                                <div class="card text-center mb-3 bg-light">
-                                    <div class="card-body">
-                                        <h6 class="card-subtitle mb-2 text-muted">Custo Total</h6>
-                                        <p class="card-text h4 fw-bold text-success">R$ 41,50</p>
-                                    </div>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Leite Integral <span>R$ 4,50</span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Pão de Forma <span>R$ 7,00</span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Maçã (Kg) <span class="price-highlight">R$ 8,00 <i class="fas fa-check-circle text-success"></i></span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Arroz (5kg) <span>R$ 22,00</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-header text-center">
-                                 <img src="https://via.placeholder.com/150x50.png?text=Logo+Angeloni" alt="Logo Angeloni" class="img-fluid supermarket-logo">
-                            </div>
-                            <div class="card-body">
-                               <div class="card text-center mb-3 bg-light">
-                                    <div class="card-body">
-                                        <h6 class="card-subtitle mb-2 text-muted">Custo Total</h6>
-                                        <p class="card-text h4 fw-bold text-danger">R$ 44,20</p>
-                                    </div>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Leite Integral <span>R$ 4,80</span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Pão de Forma <span class="price-highlight">R$ 6,50 <i class="fas fa-check-circle text-success"></i></span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Maçã (Kg) <span>R$ 9,90</span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Arroz (5kg) <span>R$ 23,00</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="card-header text-center">
-                                <img src="https://via.placeholder.com/150x50.png?text=Logo+Cooper" alt="Logo Cooper" class="img-fluid supermarket-logo">
-                            </div>
-                            <div class="card-body">
-                                <div class="card text-center mb-3 bg-light">
-                                    <div class="card-body">
-                                        <h6 class="card-subtitle mb-2 text-muted">Custo Total</h6>
-                                        <p class="card-text h4 fw-bold text-success">R$ 39,90</p>
-                                    </div>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Leite Integral <span class="price-highlight">R$ 4,40 <i class="fas fa-check-circle text-success"></i></span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Pão de Forma <span>R$ 6,80</span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Maçã (Kg) <span>R$ 8,20</span></li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">Arroz (5kg) <span class="price-highlight">R$ 20,50 <i class="fas fa-check-circle text-success"></i></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-5">
-            <a href="tela-criacao-listas.html" class="btn btn-danger btn-lg">Voltar</a>
-            <a href="tela-decisao-compra.html" class="btn btn-primary btn-lg">Ver Opções de Compra</a>
+       <div class="text-center mt-5">
+            <a href="/src/html/tela-criacao-listas.html" class="btn btn-danger btn-lg">Voltar para a Lista</a>
+            <a href="/src/html/tela-decisao-compra.html" class="btn btn-primary btn-lg">Ver Opções de Compra</a>
         </div>
     </div>
 
+    <footer class="bg-light text-dark pt-5 pb-4">
+        <div class="container text-center small text-muted">
+            <hr class="border-secondary">
+            © 2025 CheckBuy. Todos os direitos reservados.
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

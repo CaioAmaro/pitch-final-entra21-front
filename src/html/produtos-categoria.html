@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckBuy - Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="https://drive.usercontent.google.com/download?id=1WOWheDXiqtBd0ds3_9YzIo1keiRkf_C7">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar sticky-top navbar-expand-md bg-light">
+        <div class="container-sm d-md-flex justify-content-md-between align-items-md-center">
+            <a class="navbar-brand" href="/index.html"><img src="/img/logo-checkbuy.png" alt="logo-checkbuy" width="50"></a>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="d-flex flex-column align-items-start flex-md-row flex-md-row justify-content-md-between container-md">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/src/html/principal.html">Categorias</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="border-secondary py-1 bg-success"></div>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold">Carnes Bovinas</h2>
+                    <a href="/src/html/principal.html" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar às Categorias
+                    </a>
+                </div>
+
+                <div class="card mb-3 shadow-sm">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-md-3">
+                            <img src="/img/picanha.jpg" class="img-fluid rounded-start" alt="Picanha">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">Picanha (Kg)</h5>
+                                <p class="card-text text-muted">Corte nobre e suculento, perfeito para churrasco.</p>
+                                <button class="btn btn-success"><i class="fas fa-plus me-2"></i>Adicionar à Lista</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 shadow-sm">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-md-3">
+                            <img src="/img/alcatra.jpg" class="img-fluid rounded-start" alt="Alcatra">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">Alcatra (Kg)</h5>
+                                <p class="card-text text-muted">Carne macia e versátil para bifes, assados e grelhados.</p>
+                                <button class="btn btn-success"><i class="fas fa-plus me-2"></i>Adicionar à Lista</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 100px;">
+                    <div class="card-body">
+                        <h4 class="fw-bold"><i class="fas fa-shopping-cart me-2 text-success"></i>Sua Lista</h4>
+                        <hr>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">Picanha (Kg) <span class="badge bg-secondary">1</span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">Alcatra (Kg) <span class="badge bg-secondary">1</span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">Leite Integral <span class="badge bg-secondary">2</span></li>
+                        </ul>
+                        <div class="d-grid mt-4">
+                            <a href="/src/html/tela-criacao-listas.html" class="btn btn-primary btn-lg">Ver lista completa e comparar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-dark pt-5 pb-4">
+        <div class="container text-center small text-muted">
+            <hr class="border-secondary">
+            © 2025 CheckBuy. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,196 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CheckBuy - Criar Lista</title>
-    <link rel="icon" type="image/png" href="https://drive.usercontent.google.com/download?id=1WOWheDXiqtBd0ds3_9YzIo1keiRkf_C7">
+    <title>CheckBuy - Minha Lista</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { background-color: #f8f9fa; }
-        .welcome-section, .list-creation-section { display: none; }
-        .welcome-section.active, .list-creation-section.active { display: block; }
-    </style>
+    <link rel="icon" type="image/png" href="https://drive.usercontent.google.com/download?id=1WOWheDXiqtBd0ds3_9YzIo1keiRkf_C7">
 </head>
+<body class="bg-light">
 
-<body>
-
-    <div id="welcomeView" class="container text-center py-5 welcome-section active">
-        <h1 class="display-5 fw-bold mb-4">Suas Listas de Compras</h1>
-        <button id="showCreationViewBtn" class="btn btn-success btn-lg shadow-sm mb-5">
-            <i class="fas fa-plus me-2"></i>Criar Nova Lista
-        </button>
-
-        <h3 class="fw-bold mt-4">Últimas Listas Salvas</h3>
-        <div class="row g-4 mt-3 justify-content-center">
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 shadow-sm border-dark text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Compras do Mês</h5>
-                        <p class="card-text text-muted">Lista geral para o abastecimento mensal.</p>
-                        <a href="#" class="btn btn-outline-success mt-auto">Ver Lista</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 shadow-sm border-dark text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Churrasco de Sábado</h5>
-                        <p class="card-text text-muted">Itens para o churrasco com amigos.</p>
-                        <a href="#" class="btn btn-outline-success mt-auto">Ver Lista</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 shadow-sm border-dark text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Receita de Bolo</h5>
-                        <p class="card-text text-muted">Ingredientes para o bolo de chocolate.</p>
-                        <a href="#" class="btn btn-outline-success mt-auto">Ver Lista</a>
-                    </div>
+    <nav class="navbar sticky-top navbar-expand-md bg-light">
+        <div class="container-sm d-md-flex justify-content-md-between align-items-md-center">
+             <a class="navbar-brand" href="/index.html"><img src="/img/logo-checkbuy.png" alt="logo-checkbuy" width="50"></a>
+             <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="d-flex flex-column align-items-start flex-md-row flex-md-row justify-content-md-between container-md">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/src/html/principal.html">Categorias</a></li>
+                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Minha Lista</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+    </nav>
+    <div class="border-secondary py-1 bg-success"></div>
 
-    <div id="creationView" class="container py-5 list-creation-section">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold">Revise sua Lista</h1>
+            <p class="lead text-muted">Adicione mais itens ou prossiga para comparar os preços.</p>
+        </div>
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="text-center">
-                    <h1 class="display-5 fw-bold">Crie sua Lista</h1>
-                    <p class="lead text-muted">Adicione produtos pesquisando pelo nome ou usando a voz.</p>
+                 <div class="input-group input-group-lg shadow-sm mt-4 mb-5">
+                    <input type="text" class="form-control" placeholder="Adicionar outro item (ex: Arroz)">
+                    <button class="btn btn-outline-success" type="button">Adicionar</button>
                 </div>
 
-                <div class="input-group input-group-lg shadow-sm mt-4">
-                    <input type="text" id="productSearchInput" class="form-control" placeholder="Digite o nome de um produto (ex: Leite)">
-                    <button class="btn btn-success" type="button" id="addProductBtn">Adicionar</button>
-                    <button class="btn btn-outline-secondary" type="button" title="Adicionar por voz">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                </div>
-                <div id="suggestionsList" class="list-group mt-1 shadow-sm"></div>
+                 <h4><span class="badge bg-success bg-opacity-10 text-success fw-bold p-2">Carnes</span></h4>
+                 <ul class="list-group shadow-sm mb-4">
+                    <li class="list-group-item">Picanha (Kg)</li>
+                    <li class="list-group-item">Alcatra (Kg)</li>
+                 </ul>
+                  <h4><span class="badge bg-success bg-opacity-10 text-success fw-bold p-2">Laticínios</span></h4>
+                 <ul class="list-group shadow-sm">
+                    <li class="list-group-item">Leite Integral</li>
+                 </ul>
 
-                <div id="addedProducts" class="mt-5">
-                    </div>
-                 <div class="text-center mt-5">
-                    <a href="home-page.html" class="btn btn-danger btn-lg">Logout</a>
-                    <a href="tela-comparacao-precos.html" class="btn btn-primary btn-lg">Comparar Preços</a>
+
+                <div class="text-center mt-5">
+                    <a href="/src/html/produtos-categoria.html" class="btn btn-secondary btn-lg">Voltar aos Produtos</a>
+                    <a href="/src/html/tela-comparacao-precos.html" class="btn btn-primary btn-lg">Comparar Preços Agora</a>
                 </div>
             </div>
         </div>
     </div>
+    
+    <footer class="bg-light text-dark pt-5 pb-4">
+        <div class="container text-center small text-muted">
+            <hr class="border-secondary">
+            © 2025 CheckBuy. Todos os direitos reservados.
+        </div>
+    </footer>
 
-
-    <script>
-        // --- BANCO DE DADOS SIMULADO ---
-        const productsDB = [
-            { name: 'Leite Integral', category: 'Laticínios' },
-            { name: 'Leite Desnatado', category: 'Laticínios' },
-            { name: 'Queijo Mussarela', category: 'Laticínios' },
-            { name: 'Pão Francês', category: 'Padaria' },
-            { name: 'Pão de Forma', category: 'Padaria' },
-            { name: 'Maçã', category: 'Hortifrúti' },
-            { name: 'Banana', category: 'Hortifrúti' },
-            { name: 'Alface', category: 'Hortifrúti' },
-            { name: 'Arroz', category: 'Mercearia' },
-            { name: 'Feijão', category: 'Mercearia' },
-        ];
-
-        // --- ELEMENTOS DO DOM ---
-        const welcomeView = document.getElementById('welcomeView');
-        const creationView = document.getElementById('creationView');
-        const showCreationViewBtn = document.getElementById('showCreationViewBtn');
-        const searchInput = document.getElementById('productSearchInput');
-        const suggestionsList = document.getElementById('suggestionsList');
-        const addProductBtn = document.getElementById('addProductBtn');
-        const addedProductsContainer = document.getElementById('addedProducts');
-
-        let shoppingList = {}; // Estrutura: { Categoria: [produto1, produto2] }
-
-        // --- LÓGICA DE EVENTOS ---
-
-        // Alternar para a visão de criação de lista
-        showCreationViewBtn.addEventListener('click', () => {
-            welcomeView.classList.remove('active');
-            creationView.classList.add('active');
-        });
-
-        // Lógica de autocompletar
-        searchInput.addEventListener('keyup', () => {
-            const query = searchInput.value.toLowerCase();
-            suggestionsList.innerHTML = '';
-            if (query.length < 2) return;
-
-            const filteredProducts = productsDB.filter(p => p.name.toLowerCase().includes(query));
-            
-            filteredProducts.forEach(product => {
-                const item = document.createElement('a');
-                item.href = '#';
-                item.className = 'list-group-item list-group-item-action';
-                item.textContent = product.name;
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    searchInput.value = product.name;
-                    suggestionsList.innerHTML = '';
-                });
-                suggestionsList.appendChild(item);
-            });
-        });
-
-        // Adicionar produto à lista
-        addProductBtn.addEventListener('click', () => {
-            const productName = searchInput.value.trim();
-            if (!productName) return;
-
-            const product = productsDB.find(p => p.name.toLowerCase() === productName.toLowerCase());
-            if (product) {
-                const { category, name } = product;
-                if (!shoppingList[category]) {
-                    shoppingList[category] = [];
-                }
-                if (!shoppingList[category].includes(name)) {
-                     shoppingList[category].push(name);
-                }
-                renderShoppingList();
-            } else {
-                alert("Produto não encontrado!");
-            }
-            searchInput.value = '';
-            suggestionsList.innerHTML = '';
-            searchInput.focus();
-        });
-
-        // Renderizar a lista de compras na tela
-        function renderShoppingList() {
-            addedProductsContainer.innerHTML = '';
-            for (const category in shoppingList) {
-                const categoryDiv = document.createElement('div');
-                categoryDiv.className = 'mb-4';
-                
-                // Título da Categoria
-                const categoryTitle = document.createElement('h4');
-                categoryTitle.innerHTML = `<span class="badge bg-success bg-opacity-10 text-success fw-bold p-2">${category}</span>`;
-                categoryDiv.appendChild(categoryTitle);
-
-                // Lista de produtos na categoria
-                const productListUl = document.createElement('ul');
-                productListUl.className = 'list-group shadow-sm';
-                
-                shoppingList[category].forEach(productName => {
-                    const li = document.createElement('li');
-                    li.className = 'list-group-item';
-                    li.textContent = productName;
-                    productListUl.appendChild(li);
-                });
-
-                categoryDiv.appendChild(productListUl);
-                addedProductsContainer.appendChild(categoryDiv);
-            }
-        }
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
