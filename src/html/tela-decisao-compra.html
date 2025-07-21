@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckBuy - Decisão de Compra</title>
+    <link rel="icon" type="image/png" href="https://drive.usercontent.google.com/download?id=1WOWheDXiqtBd0ds3_9YzIo1keiRkf_C7">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f8f9fa; }
+        .podium-card { transition: transform 0.2s; }
+        .podium-card:hover { transform: translateY(-10px); }
+        .fa-trophy { color: #ffc107; } /* Amarelo para 1º lugar */
+        .fa-medal.silver { color: #adb5bd; } /* Cinza para 2º lugar */
+        .fa-medal.bronze { color: #cd7f32; } /* Bronze para 3º lugar */
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold">Ranking da Economia</h1>
+            <p class="lead text-muted">Comparamos os preços e o custo de transporte para você.</p>
+        </div>
+
+        <div class="row justify-content-center g-4 text-center">
+
+             <div class="col-md-6 col-lg-3 order-lg-1">
+                <div class="card h-100 shadow-sm podium-card">
+                    <div class="card-body">
+                        <i class="fas fa-medal fa-4x silver mb-3"></i>
+                        <h5 class="card-title">2º Lugar</h5>
+                        <h3 class="fw-bold">Giassi</h3>
+                        <p class="h5 fw-bold text-success">Economia de R$ 2,70</p>
+                        <p class="small text-muted">+ R$ 7,00 (transporte)</p>
+                    </div>
+                    <div class="card-footer bg-white border-0 pb-3">
+                         <button class="btn btn-outline-secondary">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 order-lg-2">
+                <div class="card h-100 shadow border-success border-2 podium-card">
+                    <div class="card-body">
+                        <i class="fas fa-trophy fa-4x mb-3"></i>
+                        <h5 class="card-title">1º Lugar</h5>
+                        <h3 class="fw-bold">Cooper</h3>
+                        <p class="h4 fw-bold text-success">Economia de R$ 4,30</p>
+                        <p class="small text-muted">+ R$ 5,00 (transporte)</p>
+                    </div>
+                     <div class="card-footer bg-white border-0 pb-3">
+                        <button class="btn btn-success">Comprar aqui</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 order-lg-3">
+                <div class="card h-100 shadow-sm podium-card">
+                    <div class="card-body">
+                         <i class="fas fa-medal fa-4x bronze mb-3"></i>
+                        <h5 class="card-title">3º Lugar</h5>
+                        <h3 class="fw-bold">Angeloni</h3>
+                        <p class="h5 fw-bold text-danger">Sem economia</p>
+                        <p class="small text-muted">+ R$ 6,50 (transporte)</p>
+                    </div>
+                     <div class="card-footer bg-white border-0 pb-3">
+                        <button class="btn btn-outline-secondary">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+        <div class="text-center">
+            <h2 class="fw-bold">O que você deseja fazer?</h2>
+            <div class="d-grid gap-3 d-md-flex justify-content-md-center mt-4">
+                <button class="btn btn-success btn-lg" type="button">
+                    <i class="fas fa-shopping-cart me-2"></i>Comprar tudo no Supermercado Cooper
+                </button>
+                <button class="btn btn-outline-success btn-lg" type="button">
+                    <i class="fas fa-route me-2"></i>Criar Rota de Economia Máxima
+                </button>
+            </div>
+             <p class="text-muted mt-3">A "Rota de Economia Máxima" sugere comprar cada item no local mais barato, mesmo que seja em lojas diferentes.</p>
+             <a href="tela-comparacao-precos.html" class="btn btn-danger btn-lg">Voltar</a>
+            </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
