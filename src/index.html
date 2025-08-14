@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=src/pages/navigation/nav_product.html">
+    <title>Página Inicial</title>
 
-    <title>Document</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS do Header -->
+    <link rel="stylesheet" href="/src/styles/styles.css">
 </head>
 
 <body>
+
+    <!-- Aqui o header será carregado -->
+    <div id="header"></div>
+
+    <main class="container mt-4">
+        <h1>Conteúdo da página</h1>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script para carregar o header -->
+    <script>
+        fetch('/src/components/header.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
+
 </body>
 
 </html>
