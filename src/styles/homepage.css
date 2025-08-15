@@ -1,0 +1,88 @@
+.global-header {
+    z-index: 1000;
+}
+
+.section {
+    min-height: 100vh;
+}
+
+nav a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.homepage-header {
+    background-color: #d0fdd7;
+    border: none !important;
+    box-shadow: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.homepage-header a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.homepage-header a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.homepage-header a:hover {
+    transform: translateY(-4px);
+    color: #198754;
+}
+
+section {
+    scroll-margin-top: 90px;
+    /* ajuste conforme a altura combinada dos headers */
+}
+
+.hero-bg-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 3rem;
+}
+
+.hero-video-bg {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video-bg video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    filter: brightness(0.5);
+}
+
+.nav-pills .nav-link.active {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 300px;
+}
+
+.card-body i {
+    color: black;
+    transition: color 0.3s;
+}
+
+.card-body i:hover {
+    transform: translateY(-4px);
+    color: #145c32;
+}
