@@ -4,33 +4,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
+    <title>CheckBuy</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS do Header -->
     <link rel="stylesheet" href="/src/styles/styles.css">
+    <script src="/src/scripts/script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- Aqui o header será carregado -->
+    <!-- Header Global -->
     <div id="header"></div>
 
-    <main class="container mt-4">
-        <h1>Conteúdo da página</h1>
-    </main>
+    <!-- Header da Homepage -->
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="homepage-header bg-success text-white py-2 position-sticky" style="top: 50px; z-index: 888;">
+        <div class="container d-flex justify-content-center gap-4">
+            <a href="#inicio" class="text-white text-decoration-none">Início</a>
+            <a href="#ofertas" class="text-white text-decoration-none">Ofertas</a>
+            <a href="#funcionalidades" class="text-white text-decoration-none">Funcionalidades</a>
+            <a href="#sobre-nos" class="text-white text-decoration-none">Sobre Nós</a>
+        </div>
+    </div>
 
-    <!-- Script para carregar o header -->
-    <script>
-        fetch('/src/components/header.html')
-            .then(res => res.text())
-            .then(data => document.getElementById('header').innerHTML = data);
-    </script>
+
+
+
+    <!-- Conteúdo principal -->
+
+    <main class="pt-1 ">
+
+        <!-- Início -->
+
+        <section id="inicio" class="section bg-light py-">
+            <div class="container text-center">
+                <h2>Bem-vindo à CheckBuy</h2>
+                <p>Ajudamos você a economizar comparando preços em supermercados de forma rápida e inteligente.</p>
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button class="btn btn-success">Compare agora</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ofertas -->
+
+        <section id="ofertas" class="section py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Ofertas da Semana</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">CARTAZ DE PROMOÇÃO (TOP)</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">CARTAZ DE PROMOÇÃO (COOPER)</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card border-success">
+                            <div class="card-body">
+                                <h5 class="card-title">CARTAZ DE PROMOÇÃO (BISTEQ)</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funcionalidades -->
+
+        <!-- Sobre -->
+
+
+        <!-- Footer -->
+        <div id="footer"></div>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Script para carregar o header -->
+        <script>
+            fetch('/src/components/header.html')
+                .then(res => res.text())
+                .then(data => document.getElementById('header').innerHTML = data);
+                
+            fetch('/src/components/footer.html')
+                .then(res => res.text())
+                .then(data => document.getElementById('footer').innerHTML = data);
+        </script>
 
 </body>
 

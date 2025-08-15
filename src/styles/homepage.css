@@ -1,0 +1,31 @@
+body {
+    scroll-behavior: smooth;
+}
+
+.global-header {
+    z-index: 1000;
+}
+
+.section {
+    min-height: 100vh;
+}
+
+nav a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.homepage-header {
+    text-decoration: none;
+    border: none !important;
+    box-shadow: none;
+}
+
+.homepage-header a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+section {
+  scroll-margin-top: 140px; /* ajuste conforme a altura combinada dos headers */
+}
