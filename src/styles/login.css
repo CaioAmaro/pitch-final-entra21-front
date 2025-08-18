@@ -1,0 +1,31 @@
+.modal-content {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+  border-radius: 16px; /* Bordas arredondadas */
+}
+.modal-backdrop + .hero-video-bg {
+  filter: blur(6px);
+  transition: filter 0.3s;
+}
+
+/* Transição suave para o blur */
+.hero-video-bg {
+  transition: filter 0.3s;
+}
+
+/* Se precisar escurecer ainda mais, pode aumentar o rgba do backdrop */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 2) !important;
+}
+
+/* Transição suave para o blur */
+.background-image {
+  transition: filter 0.3s;
+}
+
+button[type="submit"] {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 12px 0;
+  display: block;
+}
