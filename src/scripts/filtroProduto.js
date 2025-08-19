@@ -26,17 +26,17 @@
       img.classList.remove('slide-in-left', 'slide-in-right');
     });
 
-    // Detect direction for animation
+    // Detecta a direção da animação
     let direction = idx > lastIndex ? 'right' : 'left';
     if (idx === 0 && lastIndex === 2) direction = 'right';
     if (idx === 2 && lastIndex === 0) direction = 'left';
 
-    // Add animation to the new active image
+    // Adiciona animação à nova imagem ativa
     if (idx !== lastIndex) {
       carouselImgs[idx].classList.add(direction === 'right' ? 'slide-in-right' : 'slide-in-left');
     }
 
-    // Set active class
+    // Se ativa a classe
     carouselImgs.forEach((img, i) => {
       img.classList.toggle('active', i === idx);
     });
