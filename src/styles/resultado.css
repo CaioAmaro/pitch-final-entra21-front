@@ -1,0 +1,86 @@
+body {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 90px;
+}
+
+h1 {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #666;
+}
+
+/* Card dos mercados */
+.market-card {
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease;
+    min-width: 180px;
+}
+
+.market-card:hover {
+    transform: scale(1.05);
+}
+
+.highlight {
+    border: 2px solid #4caf50;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffb300;
+}
+
+.rank-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #fdd835;
+    border-radius: 50%;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Botão Detalhar lista */
+.btn-detail {
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 8px 24px;
+}
+
+/* Tabela comparativa */
+table {
+    margin-top: 20px;
+}
+
+
+thead {
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+td,
+th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.total-cell {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #2e7d32;
+    border-top: 2px solid #2e7d32;
+}
