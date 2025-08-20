@@ -1,0 +1,107 @@
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .user-container {
+            max-width: 900px;
+            margin: 32px auto;
+            background: #fff;
+            border-radius: 10px;
+            padding: 32px 24px;
+            box-shadow: 0 2px 8px #0001;
+        }
+        .user-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .user-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #eee;
+            object-fit: cover;
+        }
+        .user-info {
+            flex: 1;
+        }
+        .user-info h2 {
+            margin: 0 0 4px 0;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        .user-info a {
+            color: #555;
+            font-size: 0.98em;
+            text-decoration: underline dotted;
+        }
+        .edit-btn {
+            background: #359954;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 32px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 24px;
+        
+        }
+        .user-form {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .form-col {
+            flex: 1;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .form-group label {
+            font-size: 0.97em;
+            margin-bottom: 4px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            background: #eee;
+            font-size: 1em;
+        }
+        .form-group input:disabled {
+            background: #eee;
+            color: #888;
+        }
+        .user-btn {
+            background: #359954;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 32px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 24px;
+            float: right;
+        }
+        @media (max-width: 700px) {
+            .user-container { padding: 12px 2vw; }
+            .user-form { flex-direction: column; gap: 0; }
+            .form-col { min-width: 0; }
+            .save-btn { width: 100%; float: none; }
+            .edit-btn { margin: 16px 0 0 0; width: 100%; }
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;            
+        }
+        
