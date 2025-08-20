@@ -1,91 +1,93 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // ========================
-  // LOGIN
-  // ========================
+// src/scripts/login.js
+export function initAuth() {
   const loginForm = document.getElementById("loginForm");
-  loginForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const email = document.getElementById("loginEmail").value;
-    const senha = document.getElementById("loginSenha").value;
-    const lembrar = document.getElementById("rememberMe").checked;
-
-    if (lembrar) {
-      localStorage.setItem("loginEmail", email);
-      localStorage.setItem("loginSenha", senha);
-    }
-
-    alert("Login realizado!");
-    $("#loginModal").modal("hide");
-  });
-
-  // Pré-preencher login
-  const savedEmail = localStorage.getItem("loginEmail");
-  const savedSenha = localStorage.getItem("loginSenha");
-  if (savedEmail) document.getElementById("loginEmail").value = savedEmail;
-  if (savedSenha) document.getElementById("loginSenha").value = savedSenha;
-
-  // ========================
-  // REGISTRO
-  // ========================
   const registerForm = document.getElementById("registerForm");
   const registerBtn = document.getElementById("registerBtn");
   const acceptTerms = document.getElementById("acceptTerms");
 
-  // Garante que o botão começa desabilitado
-  registerBtn.disabled = true;
+  // ========================
+  // LOGIN
+  // ========================
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value;
+      const senha = document.getElementById("loginSenha").value;
+      const lembrar = document.getElementById("rememberMe").checked;
 
-  // Ativa/desativa o botão conforme o checkbox
-  acceptTerms.addEventListener("change", function () {
-    registerBtn.disabled = !this.checked;
-  });
+      if (lembrar) {
+        localStorage.setItem("loginEmail", email);
+        localStorage.setItem("loginSenha", senha);
+      }
 
-  // Sempre limpar os campos e resetar validações ao abrir o modal
-  $("#registerModal").on("shown.bs.modal", function () {
-    registerForm.reset();
+      alert("Login realizado!");
+      $("#loginModal").modal("hide");
+    });
+
+    // Pré-preencher login
+    const savedEmail = localStorage.getItem("loginEmail");
+    const savedSenha = localStorage.getItem("loginSenha");
+    if (savedEmail) document.getElementById("loginEmail").value = savedEmail;
+    if (savedSenha) document.getElementById("loginSenha").value = savedSenha;
+  }
+
+  // ========================
+  // REGISTRO
+  // ========================
+  if (registerForm && registerBtn && acceptTerms) {
+    // Começa desabilitado
     registerBtn.disabled = true;
-    [...registerForm.elements].forEach((el) =>
-      el.classList.remove("is-invalid")
-    );
-  });
 
-  // Validação do formulário
-  registerForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+    // Ativa/desativa botão conforme checkbox
+    acceptTerms.addEventListener("change", function () {
+      registerBtn.disabled = !this.checked;
+    });
 
-    if (!registerForm.checkValidity()) {
-      e.stopPropagation();
-      [...registerForm.elements].forEach((el) => {
-        if (!el.checkValidity()) {
-          el.classList.add("is-invalid");
-        } else {
-          el.classList.remove("is-invalid");
-        }
-      });
-      return;
-    }
+    // Limpar campos ao abrir modal
+    $("#registerModal").on("shown.bs.modal", function () {
+      registerForm.reset();
+      registerBtn.disabled = true;
+      [...registerForm.elements].forEach((el) =>
+        el.classList.remove("is-invalid")
+      );
+    });
 
-    if (!acceptTerms.checked) {
-      alert("Você precisa aceitar os termos para continuar.");
-      return;
-    }
+    // Validação do formulário
+    registerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    alert("Registro realizado com sucesso!");
-    $("#registerModal").modal("hide");
-  });
+      if (!registerForm.checkValidity()) {
+        e.stopPropagation();
+        [...registerForm.elements].forEach((el) => {
+          if (!el.checkValidity()) el.classList.add("is-invalid");
+          else el.classList.remove("is-invalid");
+        });
+        return;
+      }
 
-  // Mensagem ao clicar no botão inativo
-  registerBtn.addEventListener("click", function () {
-    if (this.disabled) {
-      alert("Você precisa aceitar os termos para ativar o registro.");
-    }
-  });
+      if (!acceptTerms.checked) {
+        alert("Você precisa aceitar os termos para continuar.");
+        return;
+      }
 
-  // Também limpar campos ao fechar o modal (garantia extra)
-  $("#registerModal").on("hidden.bs.modal", function () {
-    registerForm.reset();
-    registerBtn.disabled = true;
-    [...registerForm.elements].forEach((el) =>
-      el.classList.remove("is-invalid")
-    );
-  });
-});
+      alert("Registro realizado com sucesso!");
+      $("#registerModal").modal("hide");
+    });
+
+    // Mensagem ao clicar no botão inativo
+    registerBtn.addEventListener("click", function () {
+      if (this.disabled) {
+        alert("Você precisa aceitar os termos para ativar o registro.");
+      }
+    });
+
+    // Limpar campos ao fechar modal
+    $("#registerModal").on("hidden.bs.modal", function () {
+      registerForm.reset();
+      registerBtn.disabled = true;
+      [...registerForm.elements].forEach((el) =>
+        el.classList.remove("is-invalid")
+      );
+    });
+  }
+}

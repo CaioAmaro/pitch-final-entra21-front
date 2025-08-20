@@ -202,3 +202,4 @@ filtrosAtivos['Tipo'] = '';
 filtrosAtivos['Tamanho'] = [];
 filtrosAtivos['Mercado'] = '';
 aplicarFiltros();
+
