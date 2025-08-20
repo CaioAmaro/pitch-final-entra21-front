@@ -98,10 +98,14 @@
             .user-form { flex-direction: column; gap: 0; }
             .form-col { min-width: 0; }
             .save-btn { width: 100%; float: none; }
-            .edit-btn { margin: 16px 0 0 0; width: 100%; }
+            .edit-btn { margin: 26px 0 0 0; width: 100%; }
         }
         .buttons-container {
             display: flex;
-            justify-content: space-between;            
+            justify-content: space-between; /* Alinha os botões nas extremidades */
+            gap: 600px; /* Adiciona um espaço fixo entre os botões */
+            margin-top: 24px; /* Aplica a margem superior ao container */
         }
-        
+        .buttons-container .user-btn {
+            margin: 0; /* Reseta a margem dos botões para o container controlar */
+        }

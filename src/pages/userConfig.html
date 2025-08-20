@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Usuário</title>
-    <link rel="stylesheet" href="../styles/userConfig.css">
+    <link rel="stylesheet" href="/src/styles/userConfig.css">
 </head>
 
 <body>
     <div id="header"></div>
     <div class="user-container">
         <div class="user-header">
-            <img src="../images/logopng.png" alt="Avatar" class="user-avatar">
+            <img src="/src/images/iconUser.png" alt="Avatar" class="user-avatar">
             <div class="user-info">
                 <h2 id="user-name">Clóvis Basílio dos Santos</h2>
                 <a id="user-email" href="mailto:exempuser@gmail.com">exempuser@gmail.com</a>
@@ -64,6 +64,15 @@
     </div>
     <div id="footer"></div>
     <script src="../scripts/userConfig.js"></script>
+    <script>
+        fetch('../components/header.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('../components/footer.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
 </body>
 
 </html>
