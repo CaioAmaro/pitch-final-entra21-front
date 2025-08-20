@@ -1,15 +1,217 @@
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<link href="../styles/styles.css" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+<link href="../styles/styles.css" rel="stylesheet" />
 
-<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #2a8c4a;">
-    <a class="navbar-brand text-white" href="#" style="margin-right: auto; color: white;">
-        CheckBuy
-    </a>
-    <div class="ml-auto d-flex">
-        <button class="btn btn-light btn-custom mr-2" style="background-color: white;">Login</button>
-        <button class="btn btn-success btn-custom mr-2" style="background-color: #d0fdd7; color: black;">Registre-se</button>
-    </div>
+<!-- Navbar -->
+<nav
+  class="navbar navbar-expand-lg fixed-top"
+  style="background-color: #2a8c4a"
+>
+  <a class="navbar-brand text-white" href="#">CheckBuy</a>
+  <div class="ml-auto d-flex">
+    <button
+      class="btn btn-light mr-2"
+      data-toggle="modal"
+      data-target="#loginModal"
+    >
+      Login
+    </button>
+    <button
+      class="btn btn-success"
+      style="background-color: #d0fdd7; color: black"
+      data-toggle="modal"
+      data-target="#registerModal"
+    >
+      Registre-se
+    </button>
+  </div>
 </nav>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Modal: Login -->
+<div
+  class="modal fade"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="loginModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button
+          type="button"
+          class="close text-white"
+          data-dismiss="modal"
+          aria-label="Fechar"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="loginEmail"
+              placeholder="seuemail@exemplo.com"
+            />
+          </div>
+          <div class="form-group">
+            <label for="loginSenha">Senha</label>
+            <input
+              type="password"
+              class="form-control"
+              id="loginSenha"
+              placeholder="********"
+            />
+          </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="rememberMe" />
+            <label class="form-check-label" for="rememberMe"
+              >Lembre-se de mim</label
+            >
+          </div>
+          <button type="submit" class="btn btn-success btn-block">
+            Entrar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Registro -->
+<div
+    class="modal fade"
+    id="registerModal"
+    tabindex="-1"
+    aria-labelledby="registerModalLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="registerModalLabel">Registre-se</h5>
+                <button
+                    type="button"
+                    class="close text-white"
+                    data-dismiss="modal"
+                    aria-label="Fechar"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" novalidate>
+                    <div class="form-group">
+                        <label for="registerName">Nome completo</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="registerNome"
+                            required
+                        />
+                        <div class="invalid-feedback">Campo obrigatório.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerCPF">CPF</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="registerCPF"
+                            maxlength="14"
+                            placeholder="000.000.000-00"
+                            required
+                        />
+                        <div class="invalid-feedback">Campo obrigatório.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="registerEmail"
+                            required
+                        />
+                        <div class="invalid-feedback">Campo obrigatório.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerRua">Rua</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="registerRua"
+                            required
+                        />
+                        <div class="invalid-feedback">Campo obrigatório.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerNumero">Número</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="registerNumero"
+                            required
+                        />
+                        <div class="invalid-feedback">Campo obrigatório.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerCEP">CEP</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="registerCEP"
+                            maxlength="9"
+                            placeholder="00000-000"
+                            required
+                        />
+                        <div class="invalid-feedback">Campo obrigatório.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerComplemento">Complemento</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="registerComplemento"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Senha</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="registerSenha"
+                            required
+                        />
+                        <div class="invalid-feedback">Campo obrigatório.</div>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input
+                            type="checkbox"
+                            class="form-check-input"
+                            id="acceptTerms"
+                            required
+                        />
+                        <label class="form-check-label" for="acceptTerms">
+                            Concordo com os <a href="#">termos de uso</a>
+                        </label>
+                    </div>
+                    <button
+                        type="submit"
+                        class="btn btn-success btn-block"
+                        id="registerBtn"
+                        disabled
+                    >
+                        Criar conta
+                    </button>
+                </form>
+            </div>
+        </div>
+  </div>
+</div> 
