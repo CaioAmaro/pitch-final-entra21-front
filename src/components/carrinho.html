@@ -1,0 +1,48 @@
+<!-- Carrinho fixo -->
+<div id="cartButton" class="cart-fixed btn btn-success d-flex align-items-center">
+  🛒 <span class="ml-2">Carrinho</span>
+</div>
+
+
+<!-- Modal do carrinho -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="cartModalLabel">Seu carrinho</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered text-center">
+          <thead class="thead-light">
+            <tr>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Preço</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="cartItems">
+            <tr>
+              <td>Arroz</td>
+              <td>2</td>
+              <td>R$ 32,50</td>
+              <td>R$ 65,00</td>
+            </tr>
+            <tr>
+              <td>Feijão</td>
+              <td>1</td>
+              <td>R$ 12,90</td>
+              <td>R$ 12,90</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-right font-weight-bold">
+          Total geral: <span id="cartTotal">R$ 77,90</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

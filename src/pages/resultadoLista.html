@@ -77,6 +77,8 @@
         </table>
     </div>
 
+    <!-- Carrinho -->
+    <div id="carrinho"></div>
 
     <!-- Footer -->
     <div id="footer"></div>
@@ -90,6 +92,10 @@
         fetch("/src/components/footer.html")
             .then((res) => res.text())
             .then((data) => (document.getElementById("footer").innerHTML = data));
+
+        fetch("/src/components/carrinho.html")
+            .then((res) => res.text())
+            .then((data) => (document.getElementById("carrinho").innerHTML = data));
     </script>
 
 </body>
