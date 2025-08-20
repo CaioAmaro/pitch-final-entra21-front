@@ -4,70 +4,83 @@
   <meta charset="UTF-8">
   <title>Ofertas da semana</title>
   <link rel="stylesheet" href="../styles/filtroProduto.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-<div style="display: flex;">
-  <!-- Filtro lateral -->
-  <aside style="width: 220px; padding: 20px; border-right: 1px solid #ccc;">
-    <h2 style="font-size: 1.3em; margin-bottom: 20px;">Filtro</h2>
-    <div style="margin-bottom: 20px;">
-      <label for="tipo-produto">Tipo de produto</label>
-      <select id="tipo-produto" style="width: 100%; margin-top: 5px;">
-        <option value="">Todos</option>
-        <option value="Genérico">Genérico</option>
-        <option value="Marca">Marca</option>
-      </select>
-    </div>
-    <div style="margin-bottom: 20px;">
-      <label>Tamanho</label>
-      <div>
-        <input type="checkbox" id="tam-peq" name="tamanho" value="Pequeno">
-        <label for="tam-peq">Pequeno</label>
+  <div id="header"></div>
+  <div style="display: flex;">
+    <!-- Filtro lateral -->
+    <aside style="width: 220px; padding: 20px; border-right: 1px solid #ccc;">
+      <h2 style="font-size: 1.3em; margin-bottom: 20px;">Filtro</h2>
+      <div style="margin-bottom: 20px;">
+        <label for="tipo-produto">Tipo de produto</label>
+        <select id="tipo-produto" style="width: 100%; margin-top: 5px;">
+          <option value="">Todos</option>
+          <option value="Genérico">Genérico</option>
+          <option value="Marca">Marca</option>
+        </select>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <label>Tamanho</label>
+        <div>
+          <input type="checkbox" id="tam-peq" name="tamanho" value="Pequeno">
+          <label for="tam-peq">Pequeno</label>
+        </div>
+        <div>
+          <input type="checkbox" id="tam-med" name="tamanho" value="Médio">
+          <label for="tam-med">Médio</label>
+        </div>
+        <div>
+          <input type="checkbox" id="tam-gra" name="tamanho" value="Grande">
+          <label for="tam-gra">Grande</label>
+        </div>
       </div>
       <div>
-        <input type="checkbox" id="tam-med" name="tamanho" value="Médio">
-        <label for="tam-med">Médio</label>
+        <label for="mercado">Mercado</label>
+        <select id="mercado" style="width: 100%; margin-top: 5px;">
+          <option value="">Todos</option>
+          <option value="Cooper">Cooper</option>
+          <option value="Giassi">Giassi</option>
+          <option value="Angeloni">Angeloni</option>
+        </select>
       </div>
-      <div>
-        <input type="checkbox" id="tam-gra" name="tamanho" value="Grande">
-        <label for="tam-gra">Grande</label>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main style="flex: 1; padding: 20px;">
+      <h3 style="text-align: center; margin: 0 0 8px 0;">Ofertas da semana</h3>
+      <!-- Carrossel -->
+      <div id="carousel" class="carousel-container">
+        <div class="carousel-img" data-index="0" tabindex="0">CARTAZ DE PROMOÇÃO<br>(COOP)</div>
+        <div class="carousel-img active" data-index="1" tabindex="0">CARTAZ DE PROMOÇÃO<br>(COOPER)</div>
+        <div class="carousel-img" data-index="2" tabindex="0">CARTAZ DE PROMOÇÃO<br>(GIASSI)</div>
       </div>
-    </div>
-    <div>
-      <label for="mercado">Mercado</label>
-      <select id="mercado" style="width: 100%; margin-top: 5px;">
-        <option value="">Todos</option>
-        <option value="Cooper">Cooper</option>
-        <option value="Giassi">Giassi</option>
-        <option value="Angeloni">Angeloni</option>
-      </select>
-    </div>
-  </aside>
+      <div class="carousel-indicators">
+        <button class="carousel-indicator" data-index="0"></button>
+        <button class="carousel-indicator active" data-index="1"></button>
+        <button class="carousel-indicator" data-index="2"></button>
+      </div>
 
-  <!-- Conteúdo principal (carrossel, filtros ativos, produtos) -->
-  <main style="flex: 1; padding: 20px;">
-    <h3 style="text-align: center; margin: 0 0 8px 0;">Ofertas da semana</h3>
-    <!-- Carrossel -->
-    <div id="carousel" class="carousel-container">
-      <div class="carousel-img" data-index="0" tabindex="0">CARTAZ DE PROMOÇÃO<br>(COOP)</div>
-      <div class="carousel-img active" data-index="1" tabindex="0">CARTAZ DE PROMOÇÃO<br>(COOPER)</div>
-      <div class="carousel-img" data-index="2" tabindex="0">CARTAZ DE PROMOÇÃO<br>(GIASSI)</div>
-    </div>
-    <div class="carousel-indicators">
-      <button class="carousel-indicator" data-index="0"></button>
-      <button class="carousel-indicator active" data-index="1"></button>
-      <button class="carousel-indicator" data-index="2"></button>
-    </div>
+      <!-- Filtros ativos -->
+      <div id="filtros-ativos" class="filtros-ativos"></div>
 
-    <!-- Filtros ativos -->
-    <div id="filtros-ativos" class="filtros-ativos"></div>
+      <!-- Grade de produtos -->
+      <div class="produtos-grid" id="produtos-grid">
+        <!-- Produtos serão inseridos via JS -->
+      </div>
+    </main>
+  </div>
+  <div id="footer"></div>
+  <script src="../scripts/filtroProduto.js"></script>
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header').innerHTML = data);
 
-    <!-- Grade de produtos -->
-    <div class="produtos-grid" id="produtos-grid">
-      <!-- Produtos serão inseridos via JS -->
-    </div>
-  </main>
-</div>
-<script src="../scripts/filtroProduto.js"></script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
 </body>
 </html>
