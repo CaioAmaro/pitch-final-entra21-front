@@ -1,11 +1,107 @@
-/* styles.css */
-.cart-fixed {
+/* Container do carrinho */
+#cart-container {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    z-index: 1050;
-    padding: 10px 15px;
-    border-radius: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+/* Ícone do carrinho */
+#cart-icon {
+    background: #2a8c4a;
+    color: white;
+    font-size: 28px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+} 
+
+#cart-icon:hover {
+    animation: bounce 0.6s infinite;
+    box-shadow: 0 4px 16px rgba(42, 140, 74, 0.3);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1) rotate(-8deg); }
+    20% { transform: translateY(-10px) scale(1.12) rotate(-8deg); }
+    40% { transform: translateY(-20px) scale(1.12) rotate(-8deg); }
+    60% { transform: translateY(-10px) scale(1.12) rotate(-8deg); }
+    80% { transform: translateY(0) scale(1.12) rotate(-8deg); }
+}
+
+
+/* Badge de quantidade */
+#cart-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 7px;
+}
+
+/* Detalhes do carrinho */
+#cart-details {
+    display: none;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 250px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Lista de produtos */
+#cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+#cart-items button {
+    margin-left: 5px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 2px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* Botão finalizar */
+#cart-actions {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#cart-actions button {
+    padding: 8px 12px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
 }
