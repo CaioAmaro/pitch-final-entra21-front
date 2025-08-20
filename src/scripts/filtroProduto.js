@@ -1,35 +1,52 @@
-// Carrossel
-const carouselImgs = document.querySelectorAll('.carousel-img');
-const indicators = document.querySelectorAll('.carousel-indicator');
-let carouselIndex = 1;
-let carouselTimer = null;
-let lastIndex = 1;
 
-function showCarousel(idx) {
-  // Reorganiza as imagens para que a selecionada fique sempre no meio.
-  let order = [0, 1, 2];
-  if (idx === 0) order = [1, 0, 2];
-  if (idx === 2) order = [0, 2, 1];
+  // Carrossel
+  const carouselImgs = document.querySelectorAll('.carousel-img');
+  const indicators = document.querySelectorAll('.carousel-indicator');
+  let carouselIndex = 1;
+  let carouselTimer = null;
+  let lastIndex = 1;
 
-  // Remove todas as imagens do contêiner
-  const container = document.getElementById('carousel');
-  const imgs = Array.from(carouselImgs);
-  imgs.forEach(img => container.removeChild(img));
+  function showCarousel(idx) {
+    // Reorganiza as imagens para que a selecionada fique sempre no meio.
+    let order = [0, 1, 2];
+    if (idx === 0) order = [1, 0, 2];
+    if (idx === 2) order = [0, 2, 1];
 
-  // Re-add images em uma nova ordem
-  order.forEach(i => {
-    container.appendChild(carouselImgs[i]);
-  });
+    // Remove todas as imagens do contêiner
+    const container = document.getElementById('carousel');
+    const imgs = Array.from(carouselImgs);
+    imgs.forEach(img => container.removeChild(img));
 
-  // Remove previous animation classes
-  carouselImgs.forEach(img => {
-    img.classList.remove('slide-in-left', 'slide-in-right');
-  });
+    // Re-add images em uma nova ordem
+    order.forEach(i => {
+      container.appendChild(carouselImgs[i]);
+    });
 
-  // Detect direction for animation
-  let direction = idx > lastIndex ? 'right' : 'left';
-  if (idx === 0 && lastIndex === 2) direction = 'right';
-  if (idx === 2 && lastIndex === 0) direction = 'left';
+    // Remove previous animation classes
+    carouselImgs.forEach(img => {
+      img.classList.remove('slide-in-left', 'slide-in-right');
+    });
+
+    // Detecta a direção da animação
+    let direction = idx > lastIndex ? 'right' : 'left';
+    if (idx === 0 && lastIndex === 2) direction = 'right';
+    if (idx === 2 && lastIndex === 0) direction = 'left';
+
+    // Adiciona animação à nova imagem ativa
+    if (idx !== lastIndex) {
+      carouselImgs[idx].classList.add(direction === 'right' ? 'slide-in-right' : 'slide-in-left');
+    }
+
+    // Se ativa a classe
+    carouselImgs.forEach((img, i) => {
+      img.classList.toggle('active', i === idx);
+    });
+    indicators.forEach((ind, i) => {
+      ind.classList.toggle('active', i === idx);
+    });
+    lastIndex = carouselIndex;
+    carouselIndex = idx;
+  }
 
   // Add animation to the new active image
   if (idx !== lastIndex) {
