@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Busca</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/styles.css">
+
+</head>
+
+<body class="container py-4">
+
+    <!-- Header -->
+    <div id="header"></div>
+
+    <h2 class="text-center text-success">Melhor lugar para sua compra</h2>
+    <p class="text-center">Veja qual supermercado oferece o melhor preço para a sua lista.</p>
+
+    <!-- Cards de Mercados -->
+    <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
+        <div class="col-md-3">
+            <div class="market-card">
+                <h5>Angeloni <span class="badge bg-secondary">2º</span></h5>
+                <div class="price">R$ 59,90</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="market-card highlight">
+                <h5>Cooper <span class="badge bg-success">1º</span></h5>
+                <div class="price">R$ 49,90</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="market-card">
+                <h5>Bistek <span class="badge bg-danger">3º</span></h5>
+                <div class="price">R$ 69,90</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Detalhar -->
+    <div class="text-center mb-4">
+        <button id="toggleDetails" class="btn btn-success btn-toggle">Detalhar lista</button>
+    </div>
+
+    <!-- Tabela Detalhes -->
+    <div id="detailsTable" class="table-container">
+        <table class="table table-bordered text-center">
+            <thead class="table-success">
+                <tr>
+                    <th>Qtd</th>
+                    <th>Produto</th>
+                    <th>Cooper</th>
+                    <th>Angeloni</th>
+                    <th>Bistek</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Arroz</td>
+                    <td>R$ 32,50</td>
+                    <td>R$ 32,50</td>
+                    <td>R$ 32,50</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>Total</strong></td>
+                    <td><strong>R$ 49,90</strong></td>
+                    <td><strong>R$ 59,90</strong></td>
+                    <td><strong>R$ 69,90</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Carrinho -->
+    <div id="carrinho"></div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+
+    <script>
+        fetch("/src/components/header.html")
+            .then((res) => res.text())
+            .then((data) => (document.getElementById("header").innerHTML = data));
+
+        fetch("/src/components/footer.html")
+            .then((res) => res.text())
+            .then((data) => (document.getElementById("footer").innerHTML = data));
+
+        fetch("/src/components/carrinho.html")
+            .then((res) => res.text())
+            .then((data) => (document.getElementById("carrinho").innerHTML = data));
+    </script>
+    <script src="/src/scripts/carrinho.js" defer></script>
+
+</body>
+
+</html>
