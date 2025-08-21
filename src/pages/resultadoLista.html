@@ -12,80 +12,87 @@
 
 </head>
 
-<body class="container py-4">
+<body>
 
     <!-- Header -->
     <div id="header"></div>
 
-    <h2 class="text-center text-success">Melhor lugar para sua compra</h2>
-    <p class="text-center">Veja qual supermercado oferece o melhor preço para a sua lista.</p>
+    <main class="container py-5">
+        <h2 class="text-center text-success">Melhor lugar para sua compra</h2>
+        <p class="text-center">Veja qual supermercado oferece o melhor preço para a sua lista.</p>
 
-    <!-- Cards de Mercados -->
-    <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
-        <div class="col-md-3">
-            <div class="market-card">
-                <h5>Angeloni <span class="badge bg-secondary">2º</span></h5>
-                <div class="price">R$ 59,90</div>
+        <!-- Cards de Mercados -->
+        <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
+            <div class="col-md-3">
+                <div class="market-card">
+                    <h5>Angeloni <span class="badge bg-secondary">2º</span></h5>
+                    <div class="price">R$ 59,90</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="market-card highlight">
+                    <h5>Cooper <span class="badge bg-success">1º</span></h5>
+                    <div class="price">R$ 49,90</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="market-card">
+                    <h5>Bistek <span class="badge bg-danger">3º</span></h5>
+                    <div class="price">R$ 69,90</div>
+                </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="market-card highlight">
-                <h5>Cooper <span class="badge bg-success">1º</span></h5>
-                <div class="price">R$ 49,90</div>
-            </div>
+
+        <!-- Botão Detalhar -->
+        <div class="text-center mb-4">
+            <button id="toggleDetails" class="btn btn-success btn-toggle">Detalhar lista</button>
         </div>
-        <div class="col-md-3">
-            <div class="market-card">
-                <h5>Bistek <span class="badge bg-danger">3º</span></h5>
-                <div class="price">R$ 69,90</div>
-            </div>
+
+        <!-- Tabela Detalhes -->
+        <div id="detailsTable" class="table-container">
+            <table class="table table-bordered text-center">
+                <thead class="table-success">
+                    <tr>
+                        <th>Qtd</th>
+                        <th>Produto</th>
+                        <th>Cooper</th>
+                        <th>Angeloni</th>
+                        <th>Bistek</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Arroz</td>
+                        <td>R$ 32,50</td>
+                        <td>R$ 32,50</td>
+                        <td>R$ 32,50</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td><strong>R$ 49,90</strong></td>
+                        <td><strong>R$ 59,90</strong></td>
+                        <td><strong>R$ 69,90</strong></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
 
-    <!-- Botão Detalhar -->
-    <div class="text-center mb-4">
-        <button id="toggleDetails" class="btn btn-success btn-toggle">Detalhar lista</button>
-    </div>
-
-    <!-- Tabela Detalhes -->
-    <div id="detailsTable" class="table-container">
-        <table class="table table-bordered text-center">
-            <thead class="table-success">
-                <tr>
-                    <th>Qtd</th>
-                    <th>Produto</th>
-                    <th>Cooper</th>
-                    <th>Angeloni</th>
-                    <th>Bistek</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Arroz</td>
-                    <td>R$ 32,50</td>
-                    <td>R$ 32,50</td>
-                    <td>R$ 32,50</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><strong>Total</strong></td>
-                    <td><strong>R$ 49,90</strong></td>
-                    <td><strong>R$ 59,90</strong></td>
-                    <td><strong>R$ 69,90</strong></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Carrinho -->
-    <div id="carrinho"></div>
-
+        <!-- Carrinho -->
+        <div id="carrinho"></div>
+    </main>
     <!-- Footer -->
     <div id="footer"></div>
 
+    <!-- jQuery completo (não slim) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        fetch("/src/components/header.html")
+        fetch("/src/components/headerLogin.html")
             .then((res) => res.text())
             .then((data) => (document.getElementById("header").innerHTML = data));
 
@@ -98,6 +105,9 @@
             .then((data) => (document.getElementById("carrinho").innerHTML = data));
     </script>
     <script src="/src/scripts/carrinho.js" defer></script>
+    <script>
+        function logoutUser() { alert("Usuário deslogado!"); }
+    </script>
 
 </body>
 

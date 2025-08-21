@@ -1,9 +1,5 @@
 .global-header {
-    z-index: 1000;
-}
-
-.section {
-    min-height: 100vh;
+    z-index: 800;
 }
 
 nav a.active {
@@ -18,11 +14,6 @@ nav a.active {
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.homepage-header a {
-    color: black;
-    text-decoration: none;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
 
 .homepage-header a.active {
     font-weight: bold;
@@ -34,14 +25,9 @@ nav a.active {
     color: #198754;
 }
 
-section {
-    scroll-margin-top: 90px;
-    /* ajuste conforme a altura combinada dos headers */
-}
-
 .hero-bg-overlay {
     background-color: rgba(0, 0, 0, 0.6);
-    padding: 3rem;
+    padding: 2rem;
 }
 
 .hero-video-bg {
@@ -85,4 +71,15 @@ section {
 .card-body i:hover {
     transform: translateY(-4px);
     color: #145c32;
+}
+
+.section {
+    min-height: 100vh;
+}
+
+section {
+    scroll-margin-top: 80px;
+        min-height: 100vh;
+
+    /* ajuste conforme a altura combinada dos headers */
 }

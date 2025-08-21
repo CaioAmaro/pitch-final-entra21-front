@@ -1,3 +1,26 @@
+/* Faz o body ocupar a tela inteira e distribui os elementos */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* O main ocupa o espaço flexível entre header e footer */
+main {
+    flex: 1;
+    padding-top: 120px;   /* aumenta o espaço abaixo do header fixo */
+    padding-bottom: 40px; /* reserva espaço extra antes do footer */
+}
+
+/* Footer sempre colado no final da tela */
+#footer {
+    margin-top: auto;
+    width: 100%;
+}
+
+
+
 body {
     background-color: #fff;
     font-family: Arial, sans-serif;

@@ -5,3 +5,8 @@
 @import url('filtroProduto.css');
 @import url('resultado.css');
 @import url('carrinho.css');
+@import url('headerLogin.css');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
