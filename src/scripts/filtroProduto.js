@@ -1,4 +1,4 @@
-
+{
   // Carrossel
   const carouselImgs = document.querySelectorAll('.carousel-img');
   const indicators = document.querySelectorAll('.carousel-indicator');
@@ -62,6 +62,7 @@
   });
   lastIndex = carouselIndex;
   carouselIndex = idx;
+
 }
 
 function nextCarousel() {
