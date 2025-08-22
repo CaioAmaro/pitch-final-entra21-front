@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folheto Komprão (Issuu)</title>
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- CONTAINER PRINCIPAL DO VISUALIZADOR --- */
+        .magazine-viewport {
+            width: 100%;
+            max-width: 800px; /* Aumentei um pouco a largura para melhor visualização */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: #fff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- ÁREA DAS IMAGENS --- */
+        .flipbook-container {
+            width: 100%;
+        }
+        
+        /* Esconde todas as páginas por padrão */
+        .flipbook-container > div {
+            display: none;
+        }
+
+        /* Mostra apenas a página que tiver a classe 'active' */
+        .flipbook-container > div.active {
+            display: block;
+        }
+
+        .flipbook-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        /* --- CONTROLES DE NAVEGAÇÃO --- */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-top: 1px solid #eee;
+            background-color: #fafafa;
+        }
+
+        .controls button {
+            background-color: #e30613; /* Vermelho Komprão/Koch */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .controls button:hover {
+            background-color: #b5040f;
+        }
+
+        .controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #page-indicator {
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="magazine-viewport">
+        <div class="flipbook-container" id="folheto-issuu">
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_1.jpg" alt="Folheto - Página 1"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_2.jpg" alt="Folheto - Página 2"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_3.jpg" alt="Folheto - Página 3"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_4.jpg" alt="Folheto - Página 4"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_5.jpg" alt="Folheto - Página 5"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_6.jpg" alt="Folheto - Página 6"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_7.jpg" alt="Folheto - Página 7"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_8.jpg" alt="Folheto - Página 8"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_9.jpg" alt="Folheto - Página 9"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_10.jpg" alt="Folheto - Página 10"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_11.jpg" alt="Folheto - Página 11"></div>
+            <div><img src="https://image.isu.pub/230413180425-472097e97d130a1c1d09e5f76b70ff9c/jpg/page_12.jpg" alt="Folheto - Página 12"></div>
+        </div>
+        <div class="controls">
+            <button id="prev-page" title="Página Anterior">‹</button>
+            <span id="page-indicator"></span>
+            <button id="next-page" title="Próxima Página">›</button>
+        </div>
+    </div>
+
+    <script>
+        // O código JavaScript para a navegação continua o mesmo.
+        // Ele se adapta automaticamente ao número de imagens que você colocar no HTML.
+        document.addEventListener('DOMContentLoaded', function() {
+            const pages = document.querySelectorAll('.flipbook-container > div');
+            const prevButton = document.getElementById('prev-page');
+            const nextButton = document.getElementById('next-page');
+            const pageIndicator = document.getElementById('page-indicator');
+            
+            const totalPages = pages.length;
+            let currentPage = 0;
+
+            function showPage(pageIndex) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                pages[pageIndex].classList.add('active');
+                pageIndicator.textContent = `Página ${pageIndex + 1} de ${totalPages}`;
+                prevButton.disabled = (pageIndex === 0);
+                nextButton.disabled = (pageIndex === totalPages - 1);
+            }
+
+            nextButton.addEventListener('click', function() {
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+
+            prevButton.addEventListener('click', function() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            showPage(0);
+        });
+    </script>
+
+</body>
+</html>
