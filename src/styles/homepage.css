@@ -9,33 +9,10 @@
 nav a.active {
     font-weight: bold;
     text-decoration: underline;
-}
-
-.homepage-header {
-    background-color: #d0fdd7;
-    border: none !important;
-    box-shadow: none;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.homepage-header a {
-    color: black;
-    text-decoration: none;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.homepage-header a.active {
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.homepage-header a:hover {
-    transform: translateY(-4px);
-    color: #198754;
-}
+} 
 
 section {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 55px;
     /* ajuste conforme a altura combinada dos headers */
 }
 
