@@ -1,7 +1,6 @@
 import './homepage.js';
 import './loadHeader.js';
 import './loadFooter.js';
-
 import { initAuth } from './login.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
