@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Imagens</title>
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- CONTAINER PRINCIPAL DO VISUALIZADOR --- */
+        .magazine-viewport {
+            width: 100%;
+            max-width: 600px; /* Largura máxima do visualizador */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: #fff;
+            overflow: hidden; /* Garante que nada saia fora das bordas arredondadas */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- ÁREA DAS IMAGENS --- */
+        .flipbook-container {
+            width: 100%;
+            /* A altura será definida pela imagem */
+        }
+        
+        /* Esconde todas as páginas por padrão */
+        .flipbook-container > div {
+            display: none;
+        }
+
+        /* Mostra apenas a página que tiver a classe 'active' */
+        .flipbook-container > div.active {
+            display: block;
+        }
+
+        .flipbook-container img {
+            display: block; /* Remove espaço extra abaixo da imagem */
+            width: 100%;    /* Faz a imagem ocupar toda a largura do container */
+            height: auto;   /* Mantém a proporção da imagem */
+        }
+        
+        /* --- CONTROLES DE NAVEGAÇÃO --- */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-top: 1px solid #eee;
+            background-color: #fafafa;
+        }
+
+        .controls button {
+            background-color: #65d15c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+
+        .controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #page-indicator {
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="magazine-viewport">
+        <div class="flipbook-container" id="revista-cooper">
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/1.jpg" alt="Página 1"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/2.jpg" alt="Página 2"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/3.jpg" alt="Página 3"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/4.jpg" alt="Página 4"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/5.jpg" alt="Página 5"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/6.jpg" alt="Página 6"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/7.jpg" alt="Página 7"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/8.jpg" alt="Página 8"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/9.jpg" alt="Página 9"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/10.jpg" alt="Página 10"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/11.jpg" alt="Página 11"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/12.jpg" alt="Página 12"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/13.jpg" alt="Página 13"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/14.jpg" alt="Página 14"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/15.jpg" alt="Página 15"></div>
+            <div><img src="https://www.cooper.coop.br/revista/imagens/4251/16.jpg" alt="Página 16"></div>
+        </div>
+        <div class="controls">
+            <button id="prev-page" title="Página Anterior">‹</button>
+            <span id="page-indicator"></span>
+            <button id="next-page" title="Próxima Página">›</button>
+        </div>
+    </div>
+
+    <script>
+        // --- FUNCIONALIDADE JAVASCRIPT ---
+
+        // Espera o documento HTML ser totalmente carregado
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Seleciona os elementos importantes da página
+            const pages = document.querySelectorAll('.flipbook-container > div');
+            const prevButton = document.getElementById('prev-page');
+            const nextButton = document.getElementById('next-page');
+            const pageIndicator = document.getElementById('page-indicator');
+            
+            const totalPages = pages.length;
+            let currentPage = 0; // Começa na primeira página (índice 0)
+
+            // Função para mostrar a página correta e atualizar os controles
+            function showPage(pageIndex) {
+                // Esconde todas as páginas
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                // Mostra apenas a página desejada
+                pages[pageIndex].classList.add('active');
+                
+                // Atualiza o indicador de página
+                pageIndicator.textContent = `Página ${pageIndex + 1} de ${totalPages}`;
+                
+                // Habilita/desabilita os botões de navegação
+                prevButton.disabled = (pageIndex === 0);
+                nextButton.disabled = (pageIndex === totalPages - 1);
+            }
+
+            // Evento de clique para o botão "Próxima"
+            nextButton.addEventListener('click', function() {
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+
+            // Evento de clique para o botão "Anterior"
+            prevButton.addEventListener('click', function() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            // Mostra a primeira página ao carregar o script
+            showPage(0);
+        });
+    </script>
+
+</body>
+</html>
