@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparação de Preços da Lista</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .market-card {
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            background-color: white;
+            transition: transform 0.2s;
+        }
+        .market-card:hover {
+            transform: translateY(-5px);
+        }
+        .market-card.highlight {
+            border: 2px solid #198754;
+            background-color: #e9f5ec;
+        }
+        .market-card .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .market-card h5 {
+            font-weight: 600;
+        }
+        #detailsTable {
+            display: none; /* Inicia oculto */
+        }
+    </style>
+</head>
+<body class="container py-4">
+
+    <h2 class="text-center text-success">Melhor lugar para sua compra</h2>
+    <p class="text-center text-muted">Veja qual supermercado oferece o melhor preço para a sua lista.</p>
+
+    <div id="market-cards-container" class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
+        <div class="text-center p-5">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-2">Calculando melhores ofertas...</p>
+        </div>
+    </div>
+
+    <div class="text-center mb-4">
+        <button id="toggleDetails" class="btn btn-success">Detalhar lista</button>
+    </div>
+
+    <div id="detailsTable">
+        <table class="table table-bordered text-center table-striped">
+            <thead id="details-table-head">
+                </thead>
+            <tbody id="details-table-body">
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+
+            const API_BASE_URL = 'http://localhost:8080';
+            const marketCardsContainer = document.getElementById('market-cards-container');
+            const detailsTableHead = document.getElementById('details-table-head');
+            const detailsTableBody = document.getElementById('details-table-body');
+            const toggleDetailsBtn = document.getElementById('toggleDetails');
+            
+            toggleDetailsBtn.addEventListener('click', () => {
+                const table = document.getElementById('detailsTable');
+                if (table.style.display === 'none' || table.style.display === '') {
+                    table.style.display = 'block';
+                    toggleDetailsBtn.textContent = 'Ocultar detalhes';
+                } else {
+                    table.style.display = 'none';
+                    toggleDetailsBtn.textContent = 'Detalhar lista';
+                }
+            });
+
+            function getToken() {
+                return localStorage.getItem('jwtToken');
+            }
+
+            async function fetchData(endpoint) {
+                const token = getToken();
+                if (!token) {
+                    console.error('Token JWT não encontrado.');
+                    return null;
+                }
+                try {
+                    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    if (!response.ok) throw new Error('Erro na requisição');
+                    return await response.json();
+                } catch (error) {
+                    console.error(`Falha ao buscar dados de ${endpoint}:`, error);
+                    return null;
+                }
+            }
+
+            function formatPrice(price) {
+                return `R$${price.toFixed(2).replace('.', ',')}`;
+            }
+
+            async function loadComparison() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const listId = urlParams.get('listId');
+
+                if (!listId) {
+                    marketCardsContainer.innerHTML = `<div class="alert alert-danger">ID da lista não fornecido.</div>`;
+                    return;
+                }
+
+                // 1. Buscar os itens da lista
+                const listItems = await fetchData(`/listas/${listId}`);
+                if (!listItems || listItems.length === 0) {
+                    marketCardsContainer.innerHTML = `<div class="alert alert-info">Esta lista está vazia.</div>`;
+                    return;
+                }
+
+                // 2. Buscar as melhores ofertas para cada item
+                const offerPromises = listItems.map(item => fetchData(`/produtos/scraping/melhores-ofertas/${item.produtoId}`));
+                const allOffersByProduct = await Promise.all(offerPromises);
+                
+                // 3. Buscar os nomes de referência de cada produto
+                const productRefPromises = listItems.map(item => fetchData(`/produtos/referencias/${item.produtoId}`));
+                const productRefs = await Promise.all(productRefPromises);
+
+                // 4. Agregar os dados por supermercado
+                const marketData = {};
+                allOffersByProduct.forEach((offers, index) => {
+                    const product = listItems[index];
+                    const productRef = productRefs[index];
+                    
+                    offers.forEach(offer => {
+                        const marketName = offer.estabelecimentoNome;
+                        if (!marketData[marketName]) {
+                            marketData[marketName] = { total: 0, products: {} };
+                        }
+                        
+                        const price = offer.precoEspecial < offer.preco ? offer.precoEspecial : offer.preco;
+                        marketData[marketName].total += price * product.quantidade;
+                        marketData[marketName].products[product.produtoId] = { price, name: productRef.nome, quantity: product.quantidade };
+                    });
+                });
+
+                // 5. Ordenar os supermercados pelo total
+                const sortedMarkets = Object.entries(marketData).sort(([, a], [, b]) => a.total - b.total);
+                
+                // 6. Renderizar os cards de resumo
+                marketCardsContainer.innerHTML = '';
+                sortedMarkets.forEach(([name, data], index) => {
+                    const isBest = index === 0;
+                    const badgeClass = isBest ? 'bg-success' : (index === 1 ? 'bg-secondary' : 'bg-danger');
+                    
+                    marketCardsContainer.innerHTML += `
+                        <div class="col-md-3">
+                            <div class="market-card ${isBest ? 'highlight' : ''}">
+                                <h5>${name} <span class="badge ${badgeClass}">${index + 1}º</span></h5>
+                                <div class="price">${formatPrice(data.total)}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // 7. Renderizar a tabela detalhada
+                const marketNames = sortedMarkets.map(([name]) => name);
+                
+                // Cabeçalho da tabela
+                let tableHeadHtml = '<tr><th>Qtd</th><th>Produto</th>';
+                marketNames.forEach(name => tableHeadHtml += `<th>${name}</th>`);
+                tableHeadHtml += '</tr>';
+                detailsTableHead.innerHTML = tableHeadHtml;
+
+                // Corpo da tabela
+                detailsTableBody.innerHTML = '';
+                listItems.forEach(item => {
+                    let rowHtml = `<tr>
+                        <td>${item.quantidade}</td>
+                        <td>${marketData[marketNames[0]].products[item.produtoId].name}</td>
+                    `;
+                    marketNames.forEach(market => {
+                        const productPrice = marketData[market].products[item.produtoId]?.price;
+                        rowHtml += `<td>${productPrice ? formatPrice(productPrice) : '-'}</td>`;
+                    });
+                    rowHtml += '</tr>';
+                    detailsTableBody.innerHTML += rowHtml;
+                });
+
+                // Linha de total
+                let totalRowHtml = `<tr><td colspan="2"><strong>Total</strong></td>`;
+                sortedMarkets.forEach(([, data]) => {
+                    totalRowHtml += `<td><strong>${formatPrice(data.total)}</strong></td>`;
+                });
+                totalRowHtml += '</tr>';
+                detailsTableBody.innerHTML += totalRowHtml;
+            }
+
+            loadComparison();
+        });
+    </script>
+</body>
+</html>

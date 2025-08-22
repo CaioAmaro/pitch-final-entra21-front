@@ -49,6 +49,22 @@
       .card-title {
         flex-grow: 1;
       }
+      /* NOVO: Estilo para o badge de economia no card */
+      .card {
+        position: relative; /* Necessário para posicionar o badge */
+      }
+      .card-savings-badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background-color: #1a6f3b;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        z-index: 10;
+      }
     </style>
   </head>
   <body>
@@ -134,11 +150,23 @@
             ? `<img src="${product.urlImg}" class="card-img-top" alt="${product.nome}">`
             : `<div class="placeholder-box card-img-top"></div>`;
 
+          // --- NOVO: Lógica para calcular e criar o badge de economia ---
+          let savingsBadgeHTML = '';
+          if (prices && prices.length >= 2) {
+            const lowestPrice = prices[0];
+            const highestPrice = Math.max(...prices);
+            if (highestPrice > lowestPrice) {
+              const savings = ((highestPrice - lowestPrice) / highestPrice) * 100;
+              savingsBadgeHTML = `<div class="card-savings-badge">${savings.toFixed(0)}% OFF</div>`;
+            }
+          }
+          // --- FIM DA NOVA LÓGICA ---
+
           return `
             <div class="col">
               <a href="detalhes-produto.html?id=${product.id}" class="text-decoration-none text-dark">
                 <div class="card h-100 border-0 rounded-0">
-                  ${imageElement}
+                  ${savingsBadgeHTML} ${imageElement}
                   <div class="card-body p-3 d-flex flex-column">
                     <h6 class="card-title">${product.nome}</h6>
                     <div class="mt-auto">
@@ -283,7 +311,7 @@
             if (scrapingData && scrapingData.content.length > 0) {
               prices = scrapingData.content.map(item => 
                 (item.precoEspecial && item.precoEspecial > 0 && item.precoEspecial < item.preco) ? item.precoEspecial : item.preco
-              );
+              ).filter(price => price !== null && !isNaN(price)); // Garante que apenas números entrem
               prices.sort((a, b) => a - b);
             }
             return { ...reference, prices: prices };
