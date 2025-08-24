@@ -1,0 +1,36 @@
+/* Estilos para os links de navegação */
+.navbar-nav .nav-link {
+    position: relative; /* Necessário para posicionar o "sublinhado" */
+    transition: all 0.3s ease; /* Animação suave para a cor */
+}
+
+/* Cria o efeito de sublinhado */
+.navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px; /* Espessura da linha */
+    background: #d0fdd7; /* Cor da linha. Pode ser 'white' também */
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Começa no centro */
+    transform: translateX(-50%); /* Garante o alinhamento no centro */
+    transition: width 0.3s ease; /* Anima a largura da linha */
+}
+
+/* Efeito de hover e link ativo */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #d0fdd7 !important; /* Mude a cor do texto no hover e no ativo */
+}
+
+/* O "sublinhado" cresce no hover e no estado ativo */
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%; /* A linha se expande para a largura total */
+}
+
+/* Para o link ativo, o texto já começa com a cor de destaque */
+.navbar-nav .nav-link.active {
+    color: #d0fdd7 !important;
+}

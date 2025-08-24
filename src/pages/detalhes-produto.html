@@ -1,329 +1,451 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Detalhes do Produto</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <style>
-      .green-border {
-        border: 1px solid #c7f1c7;
-        border-radius: 5px;
-        padding: 10px;
-      }
-      .product-img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .price-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-      }
-      .price-item img {
-        width: 40px;
-        height: 40px;
-        margin-right: 15px;
-        border-radius: 5px;
-        object-fit: contain;
-      }
-      .store-price h3 {
-        font-weight: bold;
-        margin: 0;
-      }
-      .store-price h5 {
-        font-weight: normal;
-        margin: 0;
-      }
-      .price-text {
-        font-size: 2.5rem;
-        font-weight: bold;
-      }
-      .best-price-badge {
-        background-color: #d8f0d8;
-        color: #1a6f3b;
-        font-weight: bold;
-        border-radius: 5px;
-        padding: 5px 10px;
-        white-space: nowrap;
-      }
-      .similar-product-card .card-img-top {
-        height: 150px;
-        object-fit: contain;
-      }
-      .similar-product-card .btn-custom-danger {
-        background-color: #e66666;
-        border-color: #e66666;
-        color: white;
-      }
-      .placeholder-box {
-        background-color: #d8f0d8;
-        height: 150px;
-      }
-      .hidden-prices {
-        display: none;
-      }
-      .strikethrough-price {
-        text-decoration: line-through;
-        color: #e66666;
-      }
-      .price-text.text-success {
-        color: #198754 !important;
-      }
-      .modal-content {
-        border-radius: 1rem;
-      }
-      .list-card, .create-list-card {
-        transition: transform 0.2s, box-shadow 0.2s;
-        cursor: pointer;
-      }
-      .list-card:hover, .create-list-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      }
-      .modal-footer-compare {
-        background-color: #1a6f3b;
-        color: white;
-      }
-      .modal-header-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-      }
-      .list-item-card {
-        position: relative;
-        overflow: hidden;
-      }
-      .list-item-card .card-img-top {
-        height: 120px;
-      }
-      .list-item-card .delete-btn {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        background-color: #dc3545;
-        color: white;
-        border-radius: 50%;
-        width: 2rem;
-        height: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-        opacity: 0.8;
-        z-index: 10;
-        cursor: pointer;
-      }
-      .list-item-card .delete-btn:hover {
-        opacity: 1;
-      }
-      .card-image-container {
-        height: 150px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f8f9fa;
-        padding: 10px;
-      }
-      .card-image-container .card-img-top {
-        height: 100%;
-        width: auto;
-        object-fit: contain;
-      }
-    </style>
-  </head>
-  <body>
 
-    <div class="container my-5">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="catalogo-produtos.html">Produtos</a></li>
-          <li class="breadcrumb-item"><a href="#" id="breadcrumb-category">Carregando...</a></li>
-          <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-product-name">Carregando...</li>
-        </ol>
-      </nav>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes do Produto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    .green-border {
+      border: 1px solid #c7f1c7;
+      border-radius: 5px;
+      padding: 10px;
+    }
 
-      <div class="row gx-5">
-        <div class="col-md-6 mb-4 mb-md-0 d-flex justify-content-center align-items-center">
-          <div id="main-product-image-container" class="green-border w-100 text-center">
-            <div class="spinner-border text-primary" role="status"></div>
-          </div>
-        </div>
+    .product-img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        <div class="col-md-6">
-          <div class="d-flex align-items-center mb-2">
-            <h1 id="main-product-name">Carregando...</h1>
-            <span id="savings-badge" class="badge text-bg-success ms-3" style="background-color: #1a6f3b !important; font-size: 0.9em; display: none;"></span>
-          </div>
-          <p id="main-product-description" class="text-muted">Carregando...</p>
-          
-          <div id="price-list-container" class="mt-4">
-            <p>Carregando preços...</p>
-          </div>
-          
-          <button id="add-to-list-btn" class="btn btn-danger btn-lg mt-4" style="background-color: #d9534f; border-color: #d9534f;">Add na sua lista</button>
-        </div>
-      </div>
+    .price-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
 
-      <h2 class="mt-5 text-center" style="font-family: serif;">Similares</h2>
-      <div id="similar-products-grid" class="row gx-5 mt-4">
-        <div class="text-center">
+    .price-item img {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+      border-radius: 5px;
+      object-fit: contain;
+    }
+
+    .store-price h3 {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .store-price h5 {
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .price-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .best-price-badge {
+      background-color: #d8f0d8;
+      color: #1a6f3b;
+      font-weight: bold;
+      border-radius: 5px;
+      padding: 5px 10px;
+      white-space: nowrap;
+    }
+
+    .similar-product-card .card-img-top {
+      height: 150px;
+      object-fit: contain;
+    }
+
+    .similar-product-card .btn-custom-danger {
+      background-color: #e66666;
+      border-color: #e66666;
+      color: white;
+    }
+
+    .placeholder-box {
+      background-color: #d8f0d8;
+      height: 150px;
+    }
+
+    .hidden-prices {
+      display: none;
+    }
+
+    .strikethrough-price {
+      text-decoration: line-through;
+      color: #e66666;
+    }
+
+    .price-text.text-success {
+      color: #198754 !important;
+    }
+
+    .modal-content {
+      border-radius: 1rem;
+    }
+
+    .list-card,
+    .create-list-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .list-card:hover,
+    .create-list-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-footer-compare {
+      background-color: #1a6f3b;
+      color: white;
+    }
+
+    .modal-header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .list-item-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .list-item-card .card-img-top {
+      height: 120px;
+    }
+
+    .list-item-card .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #dc3545;
+      color: white;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      opacity: 0.8;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .list-item-card .delete-btn:hover {
+      opacity: 1;
+    }
+
+    .card-image-container {
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+
+    .card-image-container .card-img-top {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header Logado -->
+  <div id="header"></div>
+
+  <div class="container my-5 py-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="catalogo-produtos.html">Produtos</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="#" id="breadcrumb-category">Carregando...</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-product-name">
+          Carregando...
+        </li>
+      </ol>
+    </nav>
+
+    <div class="row gx-5">
+      <div class="col-md-6 mb-4 mb-md-0 d-flex justify-content-center align-items-center">
+        <div id="main-product-image-container" class="green-border w-100 text-center">
           <div class="spinner-border text-primary" role="status"></div>
         </div>
       </div>
-    </div>
 
-    <div class="modal fade" id="listsModal" tabindex="-1" aria-labelledby="listsModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-header-actions">
-              <button id="back-to-lists-btn" class="btn btn-link p-0 text-secondary d-none">
-                <i class="bi bi-chevron-left"></i> <small>Back</small>
-              </button>
-              <h5 class="modal-title mx-auto" id="listsModalLabel">Listas</h5>
-              <span></span>
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div id="modal-content-container">
-            </div>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button id="compare-btn" type="button" class="btn text-white modal-footer-compare px-5 d-none">Compare</button>
-          </div>
+      <div class="col-md-6">
+        <div class="d-flex align-items-center mb-2">
+          <h1 id="main-product-name">Carregando...</h1>
+          <span id="savings-badge" class="badge text-bg-success ms-3"
+            style="background-color: #1a6f3b !important; font-size: 0.9em; display: none;"></span>
         </div>
+        <p id="main-product-description" class="text-muted">Carregando...</p>
+
+        <div id="price-list-container" class="mt-4">
+          <p>Carregando preços...</p>
+        </div>
+
+        <button id="add-to-list-btn" class="btn btn-danger btn-lg mt-4"
+          style="background-color: #d9534f; border-color: #d9534f;">Add na sua lista</button>
       </div>
     </div>
 
-    <div class="modal fade" id="createListModal" tabindex="-1" aria-labelledby="createListModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createListModalLabel">Criar Nova Lista</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p class="mb-3">Digite um nome para a nova lista:</p>
-                    <input type="text" id="new-list-name-input" class="form-control" placeholder="Nome da lista">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="save-new-list-btn">Criar</button>
-                </div>
-            </div>
-        </div>
+    <h2 class="mt-5 text-center" style="font-family: serif;">Similares</h2>
+    <div id="similar-products-grid" class="row gx-5 mt-4">
+      <div class="text-center">
+        <div class="spinner-border text-primary" role="status"></div>
+      </div>
     </div>
+  </div>
 
-    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmModalLabel">Confirmação</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="confirm-message">Tem certeza que deseja continuar?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                    <button type="button" class="btn btn-danger" id="confirm-action-btn">Sim</button>
-                </div>
-            </div>
+  <div class="modal fade" id="listsModal" tabindex="-1" aria-labelledby="listsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-header-actions">
+            <button id="back-to-lists-btn" class="btn btn-link p-0 text-secondary d-none">
+              <i class="bi bi-chevron-left"></i> <small>Back</small>
+            </button>
+            <h5 class="modal-title mx-auto" id="listsModalLabel">Listas</h5>
+            <span></span>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </div>
-
-    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="notificationModalLabel">Aviso</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="notification-message"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-                </div>
-            </div>
+        <div class="modal-body">
+          <div id="modal-content-container">
+          </div>
         </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button id="compare-btn" type="button"
+            class="btn text-white modal-footer-compare px-5 d-none">Compare</button>
+        </div>
+      </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', async () => {
+  </div>
 
-        const API_BASE_URL = 'http://localhost:8080';
-        const urlParams = new URLSearchParams(window.location.search);
-        const MAIN_PRODUCT_ID = urlParams.get('id');
+  <div class="modal fade" id="createListModal" tabindex="-1" aria-labelledby="createListModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createListModalLabel">Criar Nova Lista</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-3">Digite um nome para a nova lista:</p>
+          <input type="text" id="new-list-name-input" class="form-control" placeholder="Nome da lista">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="save-new-list-btn">Criar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        if (!MAIN_PRODUCT_ID) {
-          document.querySelector('.row.gx-5').innerHTML = `<div class="alert alert-danger text-center">ID do produto não especificado na URL.</div>`;
-          return;
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Confirmação</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="confirm-message">Tem certeza que deseja continuar?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+          <button type="button" class="btn btn-danger" id="confirm-action-btn">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notificationModalLabel">Aviso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="notification-message"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div id="profileModalContent">
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div id="profileModalContent">
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="listsModal" tabindex="-1" aria-labelledby="listsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button id="back-to-lists-btn" type="button" class="btn btn-outline-secondary me-3 d-none">
+            <i class="bi bi-arrow-left"></i> Voltar
+          </button>
+          <h5 class="modal-title" id="listsModalLabel">Minhas Listas</h5>
+          <button id="compare-btn" class="btn btn-primary ms-auto d-none">Comparar</button>
+          <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modal-content-container">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="createListModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Criar Nova Lista</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" id="new-list-name-input" placeholder="Nome da lista">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" id="save-new-list-btn">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="confirmModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p id="confirm-message">Tem a certeza?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirm-action-btn">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="notificationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="notificationModalLabel">Sucesso</h5>
+        </div>
+        <div class="modal-body">
+          <p id="notification-message"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+
+      const API_BASE_URL = 'http://localhost:8080';
+      const urlParams = new URLSearchParams(window.location.search);
+      const MAIN_PRODUCT_ID = urlParams.get('id');
+
+      if (!MAIN_PRODUCT_ID) {
+        document.querySelector('.row.gx-5').innerHTML = `<div class="alert alert-danger text-center">ID do produto não especificado na URL.</div>`;
+        return;
+      }
+
+      const storeLogos = {
+        'Koch': 'https://www.larbompastor.com.br/wp-content/uploads/sites/17/2020/05/koch-super-mercado.png',
+        'Bistek': 'https://empbraatsstorage.blob.core.windows.net/atslogos/4545745a-8e50-4ba8-a6f1-74ce91886a7b_4.png',
+        'Cooper': 'https://cooper.coop.br/media/imagens/logo.png',
+        'Outros': 'https://www.cooper.coop.br/image/13825/550/0/novos-horarios-de-atendimento-da-cooper-a-partir-de-23-03.jpg'
+      };
+
+      function getToken() {
+        return localStorage.getItem('jwtToken');
+      }
+
+      async function fetchData(endpoint, method = 'GET', body = null) {
+        const token = getToken();
+        if (!token) {
+          console.error('Token JWT não encontrado. O login é necessário.');
+          return null;
         }
-
-        const storeLogos = {
-          'Koch': 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Koch_Supermercados_-_Logo.png',
-          'Angeloni': 'https://images.tcdn.com.br/img/img_prod/895315/1574519521_angeloni_logo.png',
-          'Bistek': 'https://www.bistek.com.br/assets/images/logo_bistek.png',
-          'Cooper': 'https://cooper.coop.br/media/imagens/logo.png',
-          'Outros': 'https://placehold.co/40x40'
-        };
-
-        function getToken() {
-          return localStorage.getItem('jwtToken');
+        const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+        const config = { method, headers };
+        if (body) {
+          config.body = JSON.stringify(body);
         }
-
-        async function fetchData(endpoint, method = 'GET', body = null) {
-          const token = getToken();
-          if (!token) {
-            console.error('Token JWT não encontrado. O login é necessário.');
-            return null;
+        try {
+          const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+          if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || response.statusText);
           }
-          const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
-          const config = { method, headers };
-          if (body) {
-            config.body = JSON.stringify(body);
+          const contentType = response.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            return await response.json();
           }
-          try {
-            const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
-            if (!response.ok) {
-              const errorText = await response.text();
-              throw new Error(errorText || response.statusText);
-            }
-            const contentType = response.headers.get('content-type');
-            if (contentType && contentType.includes('application/json')) {
-              return await response.json();
-            }
-            return response;
-          } catch (error) {
-            console.error(`Falha ao buscar dados de ${endpoint}:`, error);
-            return null;
-          }
+          return response;
+        } catch (error) {
+          console.error(`Falha ao buscar dados de ${endpoint}:`, error);
+          return null;
         }
-        
-        function formatPrice(price) {
-          if (price === null || isNaN(price)) return 'N/A';
-          return `R$${price.toFixed(2).replace('.', ',')}`;
-        }
+      }
 
-        function createPriceItemHtml(item, isBestPrice = false) {
-          const price = (item.precoEspecial !== null && item.precoEspecial < item.preco) ? item.precoEspecial : item.preco;
-          const name = item.unidade.nome;
-          const logo = storeLogos[name] || storeLogos['Outros'];
-          const priceHtml = isBestPrice 
-            ? `<h5 class="price-text text-success">${formatPrice(price)}</h5>` 
-            : `<h5><del class="strikethrough-price">${formatPrice(price)}</del></h5>`;
+      function formatPrice(price) {
+        if (price === null || isNaN(price)) return 'N/A';
+        return `R$${price.toFixed(2).replace('.', ',')}`;
+      }
 
-          return `
+      function createPriceItemHtml(item, isBestPrice = false) {
+        const price = (item.precoEspecial !== null && item.precoEspecial < item.preco) ? item.precoEspecial : item.preco;
+        const name = item.unidade.nome;
+        const logo = storeLogos[name] || storeLogos['Outros'];
+        const priceHtml = isBestPrice
+          ? `<h5 class="price-text text-success">${formatPrice(price)}</h5>`
+          : `<h5><del class="strikethrough-price">${formatPrice(price)}</del></h5>`;
+
+        return `
             <div class="price-item">
               <img src="${logo}" alt="${name} Logo">
               <div class="store-price">
@@ -332,104 +454,104 @@
               </div>
             </div>
           `;
+      }
+
+      function renderMainProduct(productData, scrapingData) {
+        const mainProductName = document.getElementById('main-product-name');
+        const mainProductDescription = document.getElementById('main-product-description');
+        const mainProductImageContainer = document.getElementById('main-product-image-container');
+        const priceListContainer = document.getElementById('price-list-container');
+        const breadcrumbCategory = document.getElementById('breadcrumb-category');
+        const breadcrumbProductName = document.getElementById('breadcrumb-product-name');
+        const savingsBadge = document.getElementById('savings-badge');
+
+        mainProductImageContainer.innerHTML = '';
+        priceListContainer.innerHTML = '';
+
+        breadcrumbCategory.textContent = productData.marca || 'Categoria';
+        breadcrumbProductName.textContent = productData.nome;
+
+        if (productData.urlImg) {
+          mainProductImageContainer.innerHTML = `<div class="card-image-container"><img src="${productData.urlImg}" class="card-img-top" alt="${productData.nome}"></div>`;
+        } else {
+          mainProductImageContainer.innerHTML = `<div class="placeholder-box"></div>`;
         }
 
-        function renderMainProduct(productData, scrapingData) {
-          const mainProductName = document.getElementById('main-product-name');
-          const mainProductDescription = document.getElementById('main-product-description');
-          const mainProductImageContainer = document.getElementById('main-product-image-container');
-          const priceListContainer = document.getElementById('price-list-container');
-          const breadcrumbCategory = document.getElementById('breadcrumb-category');
-          const breadcrumbProductName = document.getElementById('breadcrumb-product-name');
-          const savingsBadge = document.getElementById('savings-badge');
+        mainProductName.textContent = productData.nome;
+        mainProductDescription.textContent = productData.descricao || 'Produto sem descrição.';
 
-          mainProductImageContainer.innerHTML = '';
-          priceListContainer.innerHTML = '';
+        if (scrapingData && scrapingData.length > 0) {
+          const allPrices = scrapingData.map(item =>
+            (item.precoEspecial !== null && item.precoEspecial > 0 && item.precoEspecial < item.preco) ? item.precoEspecial : item.preco
+          ).filter(price => price !== null && !isNaN(price));
 
-          breadcrumbCategory.textContent = productData.marca || 'Categoria';
-          breadcrumbProductName.textContent = productData.nome;
-
-          if (productData.urlImg) {
-            mainProductImageContainer.innerHTML = `<div class="card-image-container"><img src="${productData.urlImg}" class="card-img-top" alt="${productData.nome}"></div>`;
+          if (allPrices.length >= 2) {
+            const lowestPrice = Math.min(...allPrices);
+            const highestPrice = Math.max(...allPrices);
+            const savings = ((highestPrice - lowestPrice) / highestPrice) * 100;
+            savingsBadge.textContent = `${savings.toFixed(0)}% de economia`;
+            savingsBadge.style.display = 'inline-block';
           } else {
-            mainProductImageContainer.innerHTML = `<div class="placeholder-box"></div>`;
+            savingsBadge.style.display = 'none';
           }
 
-          mainProductName.textContent = productData.nome;
-          mainProductDescription.textContent = productData.descricao || 'Produto sem descrição.';
+          scrapingData.sort((a, b) => {
+            const priceA = (a.precoEspecial !== null && a.precoEspecial < a.preco) ? a.precoEspecial : a.preco;
+            const priceB = (b.precoEspecial !== null && b.precoEspecial < b.preco) ? b.precoEspecial : b.preco;
+            return priceA - priceB;
+          });
 
-          if (scrapingData && scrapingData.length > 0) {
-            const allPrices = scrapingData.map(item =>
-              (item.precoEspecial !== null && item.precoEspecial > 0 && item.precoEspecial < item.preco) ? item.precoEspecial : item.preco
-            ).filter(price => price !== null && !isNaN(price));
-            
-            if (allPrices.length >= 2) {
-                const lowestPrice = Math.min(...allPrices);
-                const highestPrice = Math.max(...allPrices);
-                const savings = ((highestPrice - lowestPrice) / highestPrice) * 100;
-                savingsBadge.textContent = `${savings.toFixed(0)}% de economia`;
-                savingsBadge.style.display = 'inline-block';
-            } else {
-                savingsBadge.style.display = 'none';
-            }
+          const pricesToShow = scrapingData.slice(0, 3);
+          const pricesToHide = scrapingData.slice(3);
 
-            scrapingData.sort((a, b) => {
-              const priceA = (a.precoEspecial !== null && a.precoEspecial < a.preco) ? a.precoEspecial : a.preco;
-              const priceB = (b.precoEspecial !== null && b.precoEspecial < b.preco) ? b.precoEspecial : b.preco;
-              return priceA - priceB;
-            });
+          priceListContainer.innerHTML += createPriceItemHtml(pricesToShow[0], true);
 
-            const pricesToShow = scrapingData.slice(0, 3);
-            const pricesToHide = scrapingData.slice(3);
+          pricesToShow.slice(1).forEach(item => {
+            priceListContainer.innerHTML += createPriceItemHtml(item, false);
+          });
 
-            priceListContainer.innerHTML += createPriceItemHtml(pricesToShow[0], true);
+          if (pricesToHide.length > 0) {
+            const hiddenPricesHtml = pricesToHide.map(item => createPriceItemHtml(item, false)).join('');
 
-            pricesToShow.slice(1).forEach(item => {
-              priceListContainer.innerHTML += createPriceItemHtml(item, false);
-            });
-
-            if (pricesToHide.length > 0) {
-              const hiddenPricesHtml = pricesToHide.map(item => createPriceItemHtml(item, false)).join('');
-              
-              priceListContainer.innerHTML += `
+            priceListContainer.innerHTML += `
                 <div id="hidden-prices" class="hidden-prices">
                   ${hiddenPricesHtml}
                 </div>
                 <button id="toggle-prices-btn" class="btn btn-link p-0">Ver mais preços</button>
               `;
 
-              document.getElementById('toggle-prices-btn').addEventListener('click', (event) => {
-                const hiddenPricesDiv = document.getElementById('hidden-prices');
-                if (hiddenPricesDiv.classList.contains('hidden-prices')) {
-                  hiddenPricesDiv.classList.remove('hidden-prices');
-                  event.target.textContent = 'Ver menos preços';
-                } else {
-                  hiddenPricesDiv.classList.add('hidden-prices');
-                  event.target.textContent = 'Ver mais preços';
-                }
-              });
-            }
-          } else {
-            priceListContainer.innerHTML = `<p class="text-danger">Nenhum preço disponível.</p>`;
+            document.getElementById('toggle-prices-btn').addEventListener('click', (event) => {
+              const hiddenPricesDiv = document.getElementById('hidden-prices');
+              if (hiddenPricesDiv.classList.contains('hidden-prices')) {
+                hiddenPricesDiv.classList.remove('hidden-prices');
+                event.target.textContent = 'Ver menos preços';
+              } else {
+                hiddenPricesDiv.classList.add('hidden-prices');
+                event.target.textContent = 'Ver mais preços';
+              }
+            });
           }
+        } else {
+          priceListContainer.innerHTML = `<p class="text-danger">Nenhum preço disponível.</p>`;
         }
+      }
 
-        async function renderSimilarProducts(products) {
-          const similarProductsGrid = document.getElementById('similar-products-grid');
-          similarProductsGrid.innerHTML = '';
+      async function renderSimilarProducts(products) {
+        const similarProductsGrid = document.getElementById('similar-products-grid');
+        similarProductsGrid.innerHTML = '';
 
-          await Promise.all(products.map(async (product) => {
-            const scrapingData = await fetchData(`/produtos/scraping/${product.id}?page=0&size=3`);
-            
-            let prices = [];
-            if (scrapingData && scrapingData.content.length > 0) {
-              prices = scrapingData.content.map(item => 
-                (item.precoEspecial !== null && item.precoEspecial < item.preco) ? item.precoEspecial : item.preco
-              );
-              prices.sort((a, b) => a - b);
-            }
+        await Promise.all(products.map(async (product) => {
+          const scrapingData = await fetchData(`/produtos/scraping/${product.id}?page=0&size=3`);
 
-            const cardHTML = `
+          let prices = [];
+          if (scrapingData && scrapingData.content.length > 0) {
+            prices = scrapingData.content.map(item =>
+              (item.precoEspecial !== null && item.precoEspecial < item.preco) ? item.precoEspecial : item.preco
+            );
+            prices.sort((a, b) => a - b);
+          }
+
+          const cardHTML = `
               <div class="col-md-4 mb-4">
                 <a href="detalhes-produto.html?id=${product.id}" class="text-decoration-none text-dark">
                   <div class="card similar-product-card h-100 green-border rounded-0">
@@ -449,96 +571,96 @@
                 </a>
               </div>
             `;
-            similarProductsGrid.insertAdjacentHTML('beforeend', cardHTML);
-          }));
+          similarProductsGrid.insertAdjacentHTML('beforeend', cardHTML);
+        }));
+      }
+
+      const listsModal = new bootstrap.Modal(document.getElementById('listsModal'));
+      const modalContentContainer = document.getElementById('modal-content-container');
+      const listsModalLabel = document.getElementById('listsModalLabel');
+      const backToListsBtn = document.getElementById('back-to-lists-btn');
+      const compareBtn = document.getElementById('compare-btn');
+      const createListModal = new bootstrap.Modal(document.getElementById('createListModal'));
+      const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+      const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
+      const productToAdd = { id: MAIN_PRODUCT_ID };
+      let currentListViewState = 'lists';
+      let currentListId = null;
+      let currentListName = '';
+      let confirmAction = null;
+      let productsInCurrentList = [];
+
+      document.getElementById('add-to-list-btn').addEventListener('click', async () => {
+        const productRef = await fetchData(`/produtos/referencias/${MAIN_PRODUCT_ID}`);
+        productToAdd.nome = productRef.nome;
+        productToAdd.urlImg = productRef.urlImg;
+
+        renderListsView();
+        listsModal.show();
+      });
+
+      backToListsBtn.addEventListener('click', () => {
+        renderListsView();
+      });
+
+      compareBtn.addEventListener('click', () => {
+        if (currentListViewState === 'products' && currentListId) {
+          window.location.href = `comparacao.html?listId=${currentListId}`;
         }
+      });
 
-        const listsModal = new bootstrap.Modal(document.getElementById('listsModal'));
-        const modalContentContainer = document.getElementById('modal-content-container');
-        const listsModalLabel = document.getElementById('listsModalLabel');
-        const backToListsBtn = document.getElementById('back-to-lists-btn');
-        const compareBtn = document.getElementById('compare-btn');
-        const createListModal = new bootstrap.Modal(document.getElementById('createListModal'));
-        const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-        const notificationModal = new bootstrap.Modal(document.getElementById('notificationModal'));
-        const productToAdd = { id: MAIN_PRODUCT_ID };
-        let currentListViewState = 'lists';
-        let currentListId = null;
-        let currentListName = '';
-        let confirmAction = null;
-        let productsInCurrentList = [];
-
-        document.getElementById('add-to-list-btn').addEventListener('click', async () => {
-          const productRef = await fetchData(`/produtos/referencias/${MAIN_PRODUCT_ID}`);
-          productToAdd.nome = productRef.nome;
-          productToAdd.urlImg = productRef.urlImg;
-
-          renderListsView();
-          listsModal.show();
-        });
-
-        backToListsBtn.addEventListener('click', () => {
-          renderListsView();
-        });
-        
-        compareBtn.addEventListener('click', () => {
-            if (currentListViewState === 'products' && currentListId) {
-                window.location.href = `comparacao.html?listId=${currentListId}`;
-            }
-        });
-
-        document.getElementById('save-new-list-btn').addEventListener('click', async () => {
-            const listName = document.getElementById('new-list-name-input').value;
-            if (listName) {
-                const payload = { nome: listName };
-                const result = await fetchData('/listas', 'POST', payload);
-                if (result) {
-                    showNotification('Nova lista criada com sucesso!');
-                    createListModal.hide();
-                    renderListsView();
-                } else {
-                    showNotification('Ocorreu um erro ao criar a nova lista.', 'danger');
-                }
-            } else {
-                showNotification('O nome da lista não pode ser vazio.', 'warning');
-            }
-        });
-
-        document.getElementById('confirm-action-btn').addEventListener('click', () => {
-            if (confirmAction) {
-                confirmAction();
-                confirmAction = null;
-            }
-            confirmModal.hide();
-        });
-
-        async function addProductToList(listId, productId) {
-            const payload = { produtoReferenciaId: parseInt(productId), quantidade: 1 };
-            try {
-                const result = await fetchData(`/listas/${listId}/produtos`, 'POST', payload);
-                if (result) {
-                    showNotification(`Produto "${productToAdd.nome}" adicionado à lista com sucesso!`);
-                    return true;
-                }
-            } catch (error) {
-                const errorResponse = JSON.parse(error.message);
-                showNotification(errorResponse.message, 'danger');
-                return false;
-            }
-            return false;
+      document.getElementById('save-new-list-btn').addEventListener('click', async () => {
+        const listName = document.getElementById('new-list-name-input').value;
+        if (listName) {
+          const payload = { nome: listName };
+          const result = await fetchData('/listas', 'POST', payload);
+          if (result) {
+            showNotification('Nova lista criada com sucesso!');
+            createListModal.hide();
+            renderListsView();
+          } else {
+            showNotification('Ocorreu um erro ao criar a nova lista.', 'danger');
+          }
+        } else {
+          showNotification('O nome da lista não pode ser vazio.', 'warning');
         }
-        
-        async function renderListsView() {
-          currentListViewState = 'lists';
-          listsModalLabel.textContent = 'Listas';
-          backToListsBtn.classList.add('d-none');
-          document.getElementById('compare-btn').classList.add('d-none');
-          
-          modalContentContainer.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-primary" role="status"></div></div>`;
-          
-          const lists = await fetchData('/listas');
+      });
 
-          let listsHtml = `
+      document.getElementById('confirm-action-btn').addEventListener('click', () => {
+        if (confirmAction) {
+          confirmAction();
+          confirmAction = null;
+        }
+        confirmModal.hide();
+      });
+
+      async function addProductToList(listId, productId) {
+        const payload = { produtoReferenciaId: parseInt(productId), quantidade: 1 };
+        try {
+          const result = await fetchData(`/listas/${listId}/produtos`, 'POST', payload);
+          if (result) {
+            showNotification(`Produto "${productToAdd.nome}" adicionado à lista com sucesso!`);
+            return true;
+          }
+        } catch (error) {
+          const errorResponse = JSON.parse(error.message);
+          showNotification(errorResponse.message, 'danger');
+          return false;
+        }
+        return false;
+      }
+
+      async function renderListsView() {
+        currentListViewState = 'lists';
+        listsModalLabel.textContent = 'Listas';
+        backToListsBtn.classList.add('d-none');
+        document.getElementById('compare-btn').classList.add('d-none');
+
+        modalContentContainer.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-primary" role="status"></div></div>`;
+
+        const lists = await fetchData('/listas');
+
+        let listsHtml = `
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
               <div class="col create-list-card" id="create-new-list-card">
                 <div class="card h-100 list-card-placeholder p-4">
@@ -547,18 +669,18 @@
               </div>
           `;
 
-          if (lists && lists.length > 0) {
-              const listContentsPromises = lists.map(list => fetchData(`/listas/${list.id}`));
-              const listContents = await Promise.all(listContentsPromises);
-              
-              lists.forEach((list, index) => {
-                  const content = listContents[index];
-                  const isProductInList = content && content.some(item => item.produtoId == MAIN_PRODUCT_ID);
-                  const addButtonHtml = isProductInList 
-                    ? `<button class="btn btn-sm btn-secondary mt-2" disabled>Adicionado</button>`
-                    : `<button class="btn btn-sm btn-success add-to-existing-list-btn mt-2" data-list-id="${list.id}">Adicionar "${productToAdd.nome}"</button>`;
+        if (lists && lists.length > 0) {
+          const listContentsPromises = lists.map(list => fetchData(`/listas/${list.id}`));
+          const listContents = await Promise.all(listContentsPromises);
 
-                  listsHtml += `
+          lists.forEach((list, index) => {
+            const content = listContents[index];
+            const isProductInList = content && content.some(item => item.produtoId == MAIN_PRODUCT_ID);
+            const addButtonHtml = isProductInList
+              ? `<button class="btn btn-sm btn-secondary mt-2" disabled>Adicionado</button>`
+              : `<button class="btn btn-sm btn-success add-to-existing-list-btn mt-2" data-list-id="${list.id}">Adicionar "${productToAdd.nome}"</button>`;
+
+            listsHtml += `
                       <div class="col list-card" data-list-id="${list.id}">
                           <div class="card h-100 p-3">
                               <div class="d-flex justify-content-between align-items-center mb-2">
@@ -571,39 +693,39 @@
                           </div>
                       </div>
                   `;
-              });
-          }
-
-          listsHtml += `</div>`;
-          modalContentContainer.innerHTML = listsHtml;
-          addListHandlers();
+          });
         }
-        
-        async function renderProductsInListView(listId, listName) {
-          currentListViewState = 'products';
-          currentListId = listId;
-          currentListName = listName;
-          listsModalLabel.textContent = listName;
-          backToListsBtn.classList.remove('d-none');
-          document.getElementById('compare-btn').classList.remove('d-none');
-          
-          modalContentContainer.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-primary" role="status"></div></div>`;
-          
-          const listProducts = await fetchData(`/listas/${listId}`);
-          productsInCurrentList = listProducts;
-          
-          if (!listProducts || listProducts.length === 0) {
-            modalContentContainer.innerHTML = `<div class="p-5 text-center">Esta lista não contém produtos.</div>`;
-            return;
-          }
 
-          const productRefsPromises = listProducts.map(item => fetchData(`/produtos/referencias/${item.produtoId}`));
-          const productRefs = await Promise.all(productRefsPromises);
+        listsHtml += `</div>`;
+        modalContentContainer.innerHTML = listsHtml;
+        addListHandlers();
+      }
 
-          let productsHtml = `<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">`;
-          productRefs.forEach((product, index) => {
-            const listProduct = listProducts[index];
-            productsHtml += `
+      async function renderProductsInListView(listId, listName) {
+        currentListViewState = 'products';
+        currentListId = listId;
+        currentListName = listName;
+        listsModalLabel.textContent = listName;
+        backToListsBtn.classList.remove('d-none');
+        document.getElementById('compare-btn').classList.remove('d-none');
+
+        modalContentContainer.innerHTML = `<div class="text-center p-5"><div class="spinner-border text-primary" role="status"></div></div>`;
+
+        const listProducts = await fetchData(`/listas/${listId}`);
+        productsInCurrentList = listProducts;
+
+        if (!listProducts || listProducts.length === 0) {
+          modalContentContainer.innerHTML = `<div class="p-5 text-center">Esta lista não contém produtos.</div>`;
+          return;
+        }
+
+        const productRefsPromises = listProducts.map(item => fetchData(`/produtos/referencias/${item.produtoId}`));
+        const productRefs = await Promise.all(productRefsPromises);
+
+        let productsHtml = `<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">`;
+        productRefs.forEach((product, index) => {
+          const listProduct = listProducts[index];
+          productsHtml += `
               <div class="col">
                 <div class="card h-100 list-item-card">
                   <div class="delete-btn" data-list-id="${listId}" data-product-id="${product.id}"><i class="bi bi-dash"></i></div>
@@ -624,178 +746,182 @@
                 </div>
               </div>
             `;
-          });
-          productsHtml += `</div>`;
-          modalContentContainer.innerHTML = productsHtml;
-          addProductsInListHandlers();
-        }
-        
-        function addListHandlers() {
-            document.getElementById('create-new-list-card').addEventListener('click', () => {
-                document.getElementById('new-list-name-input').value = '';
-                createListModal.show();
-            });
+        });
+        productsHtml += `</div>`;
+        modalContentContainer.innerHTML = productsHtml;
+        addProductsInListHandlers();
+      }
 
-            document.querySelectorAll('.add-to-existing-list-btn').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-                    const listId = e.currentTarget.getAttribute('data-list-id');
-                    const success = await addProductToList(listId, productToAdd.id);
-                    if (success) {
-                        listsModal.hide();
-                    }
-                });
-            });
-            document.querySelectorAll('.view-list-btn').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    const listId = e.currentTarget.getAttribute('data-list-id');
-                    const listName = e.currentTarget.closest('.list-card').querySelector('.card-title').textContent;
-                    renderProductsInListView(listId, listName);
-                });
-            });
-            document.querySelectorAll('.delete-list-btn').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-                    const listId = e.currentTarget.getAttribute('data-list-id');
-                    document.getElementById('confirm-message').textContent = `Tem certeza que deseja deletar a lista "${e.currentTarget.closest('.card').querySelector('.card-title').textContent}"? Isso irá remover todos os itens contidos nela.`;
-                    confirmAction = async () => {
-                        const listItems = await fetchData(`/listas/${listId}`);
-                        if (listItems && listItems.length > 0) {
-                            showNotification('Esvaziando a lista antes de deletar...', 'warning');
-                            await Promise.all(listItems.map(item => fetchData(`/listas/${listId}/produtos/${item.produtoId}`, 'DELETE')));
-                        }
-                        const result = await fetchData(`/listas/${listId}`, 'DELETE');
-                        if (result) {
-                            showNotification('Lista deletada com sucesso!');
-                            renderListsView();
-                        } else {
-                            showNotification('Erro ao deletar a lista.', 'danger');
-                        }
-                    };
-                    confirmModal.show();
-                });
-            });
-        }
+      function addListHandlers() {
+        document.getElementById('create-new-list-card').addEventListener('click', () => {
+          document.getElementById('new-list-name-input').value = '';
+          createListModal.show();
+        });
 
-        function addProductsInListHandlers() {
-            document.querySelectorAll('.btn-decrease').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    const productId = e.currentTarget.getAttribute('data-product-id');
-                    const listId = e.currentTarget.getAttribute('data-list-id');
-                    const quantitySpan = document.getElementById(`quantity-${productId}`);
-                    let quantity = parseInt(quantitySpan.textContent);
-                    
-                    if (quantity > 1) {
-                        quantity--;
-                        const payload = { produtoReferenciaId: parseInt(productId), quantidade: quantity };
-                        const result = await fetchData(`/listas/${listId}/produtos`, 'PUT', payload);
-                        if (result) {
-                            renderProductsInListView(listId, currentListName);
-                        } else {
-                            showNotification('Erro ao atualizar a quantidade.', 'danger');
-                        }
-                    } else {
-                        document.getElementById('confirm-message').textContent = 'Tem certeza que deseja remover este produto da lista?';
-                        confirmAction = async () => {
-                            const result = await fetchData(`/listas/${listId}/produtos/${productId}`, 'DELETE');
-                            if (result) {
-                                renderProductsInListView(listId, currentListName);
-                            } else {
-                                showNotification('Erro ao remover o produto.', 'danger');
-                            }
-                        };
-                        confirmModal.show();
-                    }
-                });
-            });
-
-            document.querySelectorAll('.btn-increase').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    const productId = e.currentTarget.getAttribute('data-product-id');
-                    const listId = e.currentTarget.getAttribute('data-list-id');
-                    const quantitySpan = document.getElementById(`quantity-${productId}`);
-                    let quantity = parseInt(quantitySpan.textContent);
-                    quantity++;
-                    const payload = { produtoReferenciaId: parseInt(productId), quantidade: quantity };
-                    const result = await fetchData(`/listas/${listId}/produtos`, 'PUT', payload);
-                    if (result) {
-                        renderProductsInListView(listId, currentListName);
-                    } else {
-                        showNotification('Erro ao atualizar a quantidade.', 'danger');
-                    }
-                });
-            });
-            document.querySelectorAll('.list-item-card .delete-btn').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-                    const listId = e.currentTarget.getAttribute('data-list-id');
-                    const productId = e.currentTarget.getAttribute('data-product-id');
-                    document.getElementById('confirm-message').textContent = 'Tem certeza que deseja remover este produto da lista?';
-                    confirmAction = async () => {
-                        const result = await fetchData(`/listas/${listId}/produtos/${productId}`, 'DELETE');
-                        if (result) {
-                            renderProductsInListView(listId, currentListName);
-                        } else {
-                            showNotification('Erro ao remover o produto.', 'danger');
-                        }
-                    };
-                    confirmModal.show();
-                });
-            });
-        }
-        
-        async function loadProductPage() {
-          const mainProductPromise = fetchData(`/produtos/referencias/${MAIN_PRODUCT_ID}`);
-          const mainScrapingPromise = fetchData(`/produtos/scraping/${MAIN_PRODUCT_ID}?page=0`);
-          const allReferencesPromise = fetchData('/produtos/referencias/listar?page=0&size=4');
-
-          const [mainProduct, mainScraping, allReferences] = await Promise.all([
-            mainProductPromise,
-            mainScrapingPromise,
-            allReferencesPromise
-          ]);
-
-          if (mainProduct) {
-            renderMainProduct(mainProduct, mainScraping.content);
-          } else {
-            document.querySelector('.row.gx-5').innerHTML = `<div class="alert alert-danger text-center">Não foi possível carregar os detalhes do produto.</div>`;
-          }
-
-          if (allReferences) {
-            const similarProducts = allReferences.content.filter(p => p.id !== parseInt(MAIN_PRODUCT_ID)).slice(0, 3);
-            renderSimilarProducts(similarProducts);
-          } else {
-            document.getElementById('similar-products-grid').innerHTML = `<div class="alert alert-danger text-center">Não foi possível carregar produtos similares.</div>`;
-          }
-        }
-        
-        function showNotification(message, type = 'success') {
-            const modalTitle = document.getElementById('notificationModalLabel');
-            const modalMessage = document.getElementById('notification-message');
-            const modalHeader = document.querySelector('#notificationModal .modal-header');
-            
-            modalMessage.innerHTML = message;
-            
-            modalHeader.classList.remove('bg-success', 'bg-danger', 'text-white', 'bg-warning', 'text-dark');
-            
-            if (type === 'danger') {
-                modalTitle.textContent = 'Erro';
-                modalHeader.classList.add('bg-danger', 'text-white');
-            } else if (type === 'warning') {
-                modalTitle.textContent = 'Atenção';
-                modalHeader.classList.add('bg-warning', 'text-dark');
-            } else if (type === 'info') {
-                modalTitle.textContent = 'Informação';
-                modalHeader.classList.add('bg-primary', 'text-white');
-            } else {
-                modalTitle.textContent = 'Sucesso';
-                modalHeader.classList.add('bg-success', 'text-white');
+        document.querySelectorAll('.add-to-existing-list-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const listId = e.currentTarget.getAttribute('data-list-id');
+            const success = await addProductToList(listId, productToAdd.id);
+            if (success) {
+              listsModal.hide();
             }
-            notificationModal.show();
+          });
+        });
+        document.querySelectorAll('.view-list-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            const listId = e.currentTarget.getAttribute('data-list-id');
+            const listName = e.currentTarget.closest('.list-card').querySelector('.card-title').textContent;
+            renderProductsInListView(listId, listName);
+          });
+        });
+        document.querySelectorAll('.delete-list-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const listId = e.currentTarget.getAttribute('data-list-id');
+            document.getElementById('confirm-message').textContent = `Tem certeza que deseja deletar a lista "${e.currentTarget.closest('.card').querySelector('.card-title').textContent}"? Isso irá remover todos os itens contidos nela.`;
+            confirmAction = async () => {
+              const listItems = await fetchData(`/listas/${listId}`);
+              if (listItems && listItems.length > 0) {
+                showNotification('Esvaziando a lista antes de deletar...', 'warning');
+                await Promise.all(listItems.map(item => fetchData(`/listas/${listId}/produtos/${item.produtoId}`, 'DELETE')));
+              }
+              const result = await fetchData(`/listas/${listId}`, 'DELETE');
+              if (result) {
+                showNotification('Lista deletada com sucesso!');
+                renderListsView();
+              } else {
+                showNotification('Erro ao deletar a lista.', 'danger');
+              }
+            };
+            confirmModal.show();
+          });
+        });
+      }
+
+      function addProductsInListHandlers() {
+        document.querySelectorAll('.btn-decrease').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            const productId = e.currentTarget.getAttribute('data-product-id');
+            const listId = e.currentTarget.getAttribute('data-list-id');
+            const quantitySpan = document.getElementById(`quantity-${productId}`);
+            let quantity = parseInt(quantitySpan.textContent);
+
+            if (quantity > 1) {
+              quantity--;
+              const payload = { produtoReferenciaId: parseInt(productId), quantidade: quantity };
+              const result = await fetchData(`/listas/${listId}/produtos`, 'PUT', payload);
+              if (result) {
+                renderProductsInListView(listId, currentListName);
+              } else {
+                showNotification('Erro ao atualizar a quantidade.', 'danger');
+              }
+            } else {
+              document.getElementById('confirm-message').textContent = 'Tem certeza que deseja remover este produto da lista?';
+              confirmAction = async () => {
+                const result = await fetchData(`/listas/${listId}/produtos/${productId}`, 'DELETE');
+                if (result) {
+                  renderProductsInListView(listId, currentListName);
+                } else {
+                  showNotification('Erro ao remover o produto.', 'danger');
+                }
+              };
+              confirmModal.show();
+            }
+          });
+        });
+
+        document.querySelectorAll('.btn-increase').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            const productId = e.currentTarget.getAttribute('data-product-id');
+            const listId = e.currentTarget.getAttribute('data-list-id');
+            const quantitySpan = document.getElementById(`quantity-${productId}`);
+            let quantity = parseInt(quantitySpan.textContent);
+            quantity++;
+            const payload = { produtoReferenciaId: parseInt(productId), quantidade: quantity };
+            const result = await fetchData(`/listas/${listId}/produtos`, 'PUT', payload);
+            if (result) {
+              renderProductsInListView(listId, currentListName);
+            } else {
+              showNotification('Erro ao atualizar a quantidade.', 'danger');
+            }
+          });
+        });
+        document.querySelectorAll('.list-item-card .delete-btn').forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const listId = e.currentTarget.getAttribute('data-list-id');
+            const productId = e.currentTarget.getAttribute('data-product-id');
+            document.getElementById('confirm-message').textContent = 'Tem certeza que deseja remover este produto da lista?';
+            confirmAction = async () => {
+              const result = await fetchData(`/listas/${listId}/produtos/${productId}`, 'DELETE');
+              if (result) {
+                renderProductsInListView(listId, currentListName);
+              } else {
+                showNotification('Erro ao remover o produto.', 'danger');
+              }
+            };
+            confirmModal.show();
+          });
+        });
+      }
+
+      async function loadProductPage() {
+        const mainProductPromise = fetchData(`/produtos/referencias/${MAIN_PRODUCT_ID}`);
+        const mainScrapingPromise = fetchData(`/produtos/scraping/${MAIN_PRODUCT_ID}?page=0`);
+        const allReferencesPromise = fetchData('/produtos/referencias/listar?page=0&size=4');
+
+        const [mainProduct, mainScraping, allReferences] = await Promise.all([
+          mainProductPromise,
+          mainScrapingPromise,
+          allReferencesPromise
+        ]);
+
+        if (mainProduct) {
+          renderMainProduct(mainProduct, mainScraping.content);
+        } else {
+          document.querySelector('.row.gx-5').innerHTML = `<div class="alert alert-danger text-center">Não foi possível carregar os detalhes do produto.</div>`;
         }
 
-        loadProductPage();
-      });
-    </script>
-  </body>
+        if (allReferences) {
+          const similarProducts = allReferences.content.filter(p => p.id !== parseInt(MAIN_PRODUCT_ID)).slice(0, 3);
+          renderSimilarProducts(similarProducts);
+        } else {
+          document.getElementById('similar-products-grid').innerHTML = `<div class="alert alert-danger text-center">Não foi possível carregar produtos similares.</div>`;
+        }
+      }
+
+      function showNotification(message, type = 'success') {
+        const modalTitle = document.getElementById('notificationModalLabel');
+        const modalMessage = document.getElementById('notification-message');
+        const modalHeader = document.querySelector('#notificationModal .modal-header');
+
+        modalMessage.innerHTML = message;
+
+        modalHeader.classList.remove('bg-success', 'bg-danger', 'text-white', 'bg-warning', 'text-dark');
+
+        if (type === 'danger') {
+          modalTitle.textContent = 'Erro';
+          modalHeader.classList.add('bg-danger', 'text-white');
+        } else if (type === 'warning') {
+          modalTitle.textContent = 'Atenção';
+          modalHeader.classList.add('bg-warning', 'text-dark');
+        } else if (type === 'info') {
+          modalTitle.textContent = 'Informação';
+          modalHeader.classList.add('bg-primary', 'text-white');
+        } else {
+          modalTitle.textContent = 'Sucesso';
+          modalHeader.classList.add('bg-success', 'text-white');
+        }
+        notificationModal.show();
+      }
+
+      loadProductPage();
+    });
+  </script>
+
+  <script type="module" src="../scripts/pages/catalogo-produtos.js"></script>
+
+</body>
+
 </html>

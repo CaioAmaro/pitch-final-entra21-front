@@ -1,6 +1,6 @@
 document.addEventListener("scroll", () => {
   const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".homepage-header a");
+  const navLinks = document.querySelectorAll(".nav-item a");
 
   let current = "";
 

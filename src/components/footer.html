@@ -1,41 +1,73 @@
-<footer style="background:#359954; color:#fff; padding:32px 0;">
- <link rel="stylesheet" href="src/styles/styles.css"> 
-  <div class="footer-main" style="display:flex; justify-content:space-between; align-items:flex-start; max-width:1100px; margin:0 auto; flex-wrap:wrap; gap:32px;">
-    <!-- Logo e redes -->
-    <div class="footer-logo-social" style="min-width:160px; text-align:left; display:flex; flex-direction:column; align-items:flex-start;">
-      <div style="background:#fff; width:110px; height:110px; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">
-        <img src="src/images/logopng.png" alt="Logo" style="max-width:90px; max-height:90px;">
+<style>
+  .footer-link {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .footer-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+  
+  .social-icons-footer a {
+      transition: transform 0.3s ease;
+  }
+
+  .social-icons-footer a:hover {
+      transform: scale(1.2); /* Efeito de zoom suave */
+  }
+</style>
+
+<footer class="bg-success text-white py-5">
+  <div class="container">
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-12 text-center text-lg-start">
+        <div class="bg-white p-2 rounded d-inline-block mb-3 shadow">
+          <img src="https://cdn.discordapp.com/attachments/1400470188641615984/1400470940214886483/logo.jpg?ex=68aa6b73&is=68a919f3&hm=319cc4666755c12151f191471431f7190d59201fa91056a650a41e65fbf6fc4e" alt="Logo CheckBuy" style="max-width: 90px;">
+        </div>
+        <div class="social-icons-footer">
+          <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-4"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-linkedin fs-4"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-instagram fs-4"></i></a>
+        </div>
       </div>
-      <div style="display:flex; gap:12px; margin-left:2px;">
-        <a href="#" style="color:#fff;"><i class="bi bi-twitter" style="font-size:1.3rem;"></i></a>
-        <a href="#" style="color:#fff;"><i class="bi bi-linkedin" style="font-size:1.3rem;"></i></a>
-        <a href="#" style="color:#fff;"><i class="bi bi-instagram" style="font-size:1.3rem;"></i></a>
+
+      <div class="col-lg-8 col-md-12">
+        <div class="row align-items-center">
+          <div class="col-md-7 text-center text-md-end">
+            <h4>Precisa de ajuda?</h4>
+          </div>
+          <div class="col-md-5 text-center text-md-end mt-2 mt-md-0">
+            <a href="#" class="btn btn-outline-light btn-lg">Fale conosco</a>
+          </div>
+        </div>
+
+        <hr class="border-light opacity-50 my-4">
+
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <h5 class="mb-3">Ajuda</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="footer-link">Contatos</a></li>
+              <li><a href="#" class="footer-link">Serviços</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 text-center text-md-start">
+            <h5 class="mb-3">Outros</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="footer-link">Política de privacidade</a></li>
+              <li><a href="#" class="footer-link">Área do anunciante</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- Texto, menus e botão -->
-    <div class="footer-content" style="flex:1; min-width:320px; display:flex; flex-direction:column; align-items:flex-end;">
-      <div class="footer-content-inner" style="width:100%; max-width:520px; text-align:right;">
-        <div style="display:flex; align-items:center; justify-content:flex-end; gap:16px; flex-wrap:wrap;">
-          <h4 style="margin-bottom:8px; margin-top:0;">Precisa de ajuda?</h4>
-          <a href="#" style="background:#666; color:#fff; padding:10px 28px; border-radius:6px; border:1.5px solid #fff; font-size:1.1em; text-decoration:none; font-weight:500; margin-bottom:8px;">Fale conosco</a>
-        </div>
-        <hr class="footer-hr" style="border:0; border-top:2px solid #b7e2c2; width:60%; margin:8px 0 20px auto;">
-        <div class="footer-links" style="display:flex; justify-content:flex-end; gap:48px;">
-          <div style="text-align:left;">
-            <strong>Ajuda</strong>
-            <ul style="list-style:none; padding:0; margin:8px 0 0 0; font-size:0.97em;">
-              <li><a href="#" style="color:#fff; text-decoration:none;">Contatos</a></li>
-              <li><a href="#" style="color:#fff; text-decoration:none;">Serviços</a></li>
-            </ul>
-          </div>
-          <div style="text-align:left;">
-            <strong>Outros</strong>
-            <ul style="list-style:none; padding:0; margin:8px 0 0 0; font-size:0.97em;">
-              <li><a href="#" style="color:#fff; text-decoration:none;">Política de privacidade</a></li>
-              <li><a href="#" style="color:#fff; text-decoration:none;">Área do anunciante</a></li>
-            </ul>
-          </div>
-        </div>
+
+    <div class="row mt-5">
+      <div class="col text-center border-top border-light opacity-50 pt-4">
+        <p class="mb-0 small">&copy; 2025 CheckBuy. Todos os direitos reservados. Blumenau, SC</p>
       </div>
     </div>
   </div>
