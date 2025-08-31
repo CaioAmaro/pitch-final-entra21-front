@@ -1,15 +1,15 @@
 import { loadHeader } from '../components/headerLogado.js';
 import { loadFooter } from '../components/footerLogado.js';
-import {initCatalogPage} from '../populeProdutos.js';
 import { updateUserHeader, loadAndShowProfileModal } from '../components/headerUser.js'; 
 import { showMyListsModal } from '../components/lists-modal.js';    
+import {initProductDetailPage} from '../loadProductPage.js';
 
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadHeader();
   await loadFooter();
   updateUserHeader();
-  initCatalogPage();
+  initProductDetailPage();
 
    // Perfil
   const profileLink = document.getElementById('profile-link');

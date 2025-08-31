@@ -1,4 +1,10 @@
 // src/scripts/loginAndRegister.js
+
+// ========================
+// API Base dinâmica
+// ========================
+import { API_BASE_URL } from './config.js';
+
 export function initAuth() {
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
@@ -14,6 +20,9 @@ export function initAuth() {
     loginError.style.marginTop = "5px";
     loginForm.appendChild(loginError);
 
+    const loginModalEl = document.getElementById("loginModal");
+    const loginModal = new bootstrap.Modal(loginModalEl);
+
     loginForm.addEventListener("submit", async function (e) {
       e.preventDefault();
       loginError.textContent = "";
@@ -22,14 +31,13 @@ export function initAuth() {
       const senha = document.getElementById("loginSenha").value.trim();
       const lembrar = document.getElementById("rememberMe").checked;
 
-      // Validação de campos obrigatórios
       if (!email || !senha) {
         loginError.textContent = "Por favor, preencha todos os campos.";
         return;
       }
 
       try {
-        const response = await fetch("http://localhost:8080/login", {
+        const response = await fetch(`${API_BASE_URL}/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, senha }),
@@ -44,16 +52,14 @@ export function initAuth() {
 
         if (data.token) {
           localStorage.setItem("jwtToken", data.token);
-
           if (lembrar) {
             localStorage.setItem("loginEmail", email);
             localStorage.setItem("loginSenha", senha);
           }
 
           alert("Login realizado com sucesso!");
-          $("#loginModal").modal("hide");
+          loginModal.hide();
 
-          // Redirecionamento opcional
           window.location.href = "pages/catalogo-produtos.html";
         } else {
           loginError.textContent = "Token não recebido!";
@@ -64,7 +70,6 @@ export function initAuth() {
       }
     });
 
-    // Pré-preencher login
     const savedEmail = localStorage.getItem("loginEmail");
     const savedSenha = localStorage.getItem("loginSenha");
     if (savedEmail) document.getElementById("loginEmail").value = savedEmail;
@@ -82,11 +87,15 @@ export function initAuth() {
 
     registerBtn.disabled = true;
 
+    const registerModalEl = document.getElementById("registerModal");
+    const registerModal = new bootstrap.Modal(registerModalEl);
+
     acceptTerms.addEventListener("change", function () {
       registerBtn.disabled = !this.checked;
     });
 
-    $("#registerModal").on("shown.bs.modal", function () {
+    // Limpar formulário ao abrir
+    registerModalEl.addEventListener("shown.bs.modal", function () {
       registerForm.reset();
       registerBtn.disabled = true;
       registerError.textContent = "";
@@ -121,7 +130,7 @@ export function initAuth() {
       }
 
       try {
-        const response = await fetch("http://localhost:8080/cadastro", {
+        const response = await fetch(`${API_BASE_URL}/cadastro`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nome, email, senha }),
@@ -135,7 +144,7 @@ export function initAuth() {
         }
 
         alert("Registro realizado com sucesso!");
-        $("#registerModal").modal("hide");
+        registerModal.hide();
       } catch (err) {
         console.error("Erro ao registrar:", err);
         registerError.textContent = "Erro ao se conectar ao servidor.";
@@ -143,10 +152,12 @@ export function initAuth() {
     });
 
     registerBtn.addEventListener("click", function () {
-      if (this.disabled) registerError.textContent = "Você precisa aceitar os termos para ativar o registro.";
+      if (this.disabled)
+        registerError.textContent =
+          "Você precisa aceitar os termos para ativar o registro.";
     });
 
-    $("#registerModal").on("hidden.bs.modal", function () {
+    registerModalEl.addEventListener("hidden.bs.modal", function () {
       registerForm.reset();
       registerBtn.disabled = true;
       registerError.textContent = "";

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,29 +7,25 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" href="styles/pages/homepage.css" />
 </head>
 
 <body>
 
-   <div id="alert-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-   
   <!-- Header Global -->
   <div id="header"></div>
 
   <!-- Início -->
   <section id="inicio" class="hero-video-bg pt-5 ">
     <video autoplay muted loop playsinline>
-      <source src="/src/images/market-room-loop.mp4" type="video/webm" />
+      <source src="videos\market-room-loop.mp4" type="video/webm" />
       Seu navegador não suporta vídeo.
     </video>
     <div class="container text-center text-white">
       <h1 class="display-4 fw-bold">Bem-vindo à CheckBuy!</h1>
       <p class="lead">Compare preços, economize tempo e dinheiro.</p>
       <!-- Adicionar rota depois -->
-      <a class="btn btn-success btn-lg mt-3" href="components/filtroProduto.html">Começar agora</a>
+      <a class="btn btn-success btn-lg mt-3">Começar agora</a>
     </div>
   </section>
 
@@ -207,9 +204,9 @@
       </div>
 
       <div class="row g-4 justify-content-center">
-        <div class="col-lg-4 col-md-6">
-          <div class="card h-100 text-center border-0 shadow-sm card-hover team-card">
-            <img src="/src/images/caio.jpg" class="team-avatar rounded-circle shadow-sm" alt="Foto de Caio Amaro">
+        <div class="col-lg-4 col-md-6 py-5">
+          <div class="card text-center border-0 shadow-sm card-hover team-card">
+            <img src="images/caio.jpg" class="team-avatar rounded-circle shadow-sm" alt="Foto de Caio Amaro">
             <div class="card-body">
               <h5 class="card-title">Caio Amaro</h5>
               <p class="text-muted mb-3">Desenvolvedor Back-end</p>
@@ -223,9 +220,9 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6">
-          <div class="card h-100 text-center border-0 shadow-sm card-hover team-card">
-            <img src="/src/images/douglas.jpg" class="team-avatar rounded-circle shadow-sm"
+        <div class="col-lg-4 col-md-6 py-5">
+          <div class="card text-center border-0 shadow-sm card-hover team-card">
+            <img src="images/douglas.jpg" class="team-avatar rounded-circle shadow-sm"
               alt="Foto de Eliton Douglas">
             <div class="card-body">
               <h5 class="card-title">Eliton Douglas S. P.</h5>
@@ -239,9 +236,9 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6">
-          <div class="card h-100 text-center border-0 shadow-sm card-hover team-card">
-            <img src="/src/images/jackson.jpg" class="team-avatar rounded-circle shadow-sm"
+        <div class="col-lg-4 col-md-6 py-5">
+          <div class="card text-center border-0 shadow-sm card-hover team-card">
+            <img src="images/jackson.jpg" class="team-avatar rounded-circle shadow-sm"
               alt="Foto de Jackson A. Lourenço">
             <div class="card-body">
               <h5 class="card-title">Jackson A. Lourenço</h5>
@@ -266,8 +263,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
     crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script type="module" src="./scripts/pages/homepage.js"></script>
+  <script type="module" src="scripts\pages\homepage.js"></script>
 </body>
 
 </html>

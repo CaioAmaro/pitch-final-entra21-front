@@ -2,6 +2,9 @@
  * Função para buscar e exibir o nome do utilizador logado no header.
  * Requer que o elemento HTML com o ID 'userNameDisplay' exista na página.
  */
+
+import { API_BASE_URL } from '../config.js';
+
 export async function updateUserHeader() {
   const userNameDisplay = document.getElementById('userNameDisplay');
 
@@ -19,7 +22,7 @@ export async function updateUserHeader() {
 
   try {
     // 2. Fazer a requisição GET para a API
-    const response = await fetch('http://localhost:8080/user', {
+    const response = await fetch(API_BASE_URL + '/user', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}` // Incluímos o token no cabeçalho
@@ -65,7 +68,7 @@ async function populateProfileModal() {
   }
 
   try {
-    const response = await fetch('http://localhost:8080/user', {
+    const response = await fetch(API_BASE_URL + '/user', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`

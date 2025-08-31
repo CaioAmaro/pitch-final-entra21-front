@@ -1,15 +1,16 @@
 import { loadHeader } from '../components/headerLogado.js';
 import { loadFooter } from '../components/footerLogado.js';
-import {initCatalogPage} from '../populeProdutos.js';
 import { updateUserHeader, loadAndShowProfileModal } from '../components/headerUser.js'; 
-import { showMyListsModal } from '../components/lists-modal.js';    
+import { showMyListsModal } from '../components/lists-modal.js';
+import { initComparisonPage } from '../comparacaoSupemercado.js';
 
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadHeader();
   await loadFooter();
   updateUserHeader();
-  initCatalogPage();
+  initComparisonPage();
+
 
    // Perfil
   const profileLink = document.getElementById('profile-link');
@@ -24,6 +25,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   const myListsLink = document.getElementById('my-lists-link');
   if (myListsLink) {
     myListsLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showMyListsModal();       // abre o modal de listas
+    });
+  }
+
+
+  const myListsLinks = document.getElementById('clickList');
+  if (myListsLinks) {
+    myListsLinks.addEventListener('click', (e) => {
       e.preventDefault();
       showMyListsModal();       // abre o modal de listas
     });
